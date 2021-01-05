@@ -7,14 +7,14 @@
 ## 작업 LIST
 ### Box로 VM 생성하기 (CentOS, Ubuntu 등)
  * Vagrantfile 을 로컬의 user 디렉토리 밑에 생성
- + 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 
+ 1. 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 
 ```
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/centos-7.2"
   config.vm.box_version = "2.3.1"
 end
 ```
- + 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (***디렉토리 한번 확인해보기)
+ 2. 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (***디렉토리 한번 확인해보기)
 ### VM 삭제
 ### VM의 설정 변경
 #### CORE
