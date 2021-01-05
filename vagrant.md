@@ -40,12 +40,13 @@ end
 
 * TIP :
 다음의 설정으로 gui 및 name등을 세팅할 수 있다.
-``config.vm.provider "virtualbox" do |v|
+```config.vm.provider "virtualbox" do |v|
   v.gui = true 
   # 부팅되면서 gui 환경으로 부팅
   v.name = "my_vm"
   # VirtualBox GUI에서의 name을 세팅할 수 있음
-end`` 
+end```
+
 #### DISK (중요)
 * DISK에는 여러가지 옵션이 있음. (참고 : https://www.vagrantup.com/docs/disks/configuration) *** 정리할 게 좀 많을듯?
 ```
