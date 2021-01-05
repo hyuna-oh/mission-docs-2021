@@ -14,17 +14,31 @@ Vagrant.configure("2") do |config|
   config.vm.box_version = "2.3.1"
 end
 ```
- 2. 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (***디렉토리 한번 확인해보기)
+(여기서 init 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
+ 2. 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (*** TODO : 디렉토리 한번 확인해보기)
 ### VM 삭제
+* 삭제 명령어 : ```vagrant box remove NAME``` 
+* 예시 : TODO
 ### VM의 설정 변경
 #### CORE
 #### MEMORY
 #### DISK (중요)
+* TODO
+```
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "bento/centos-7.4"
+  config.vm.provider "virtualbox" do |vb|
+     vb.cpus = "4"
+     vb.memory = "4096"
+  end
+
+end
+```
 ### 포트 포워딩
 
 ### SSH 접속
- * SSH 접속 Command
- ```vagrant ssh``` 
+ * SSH 접속 Command : ```vagrant ssh``` 
 
 ### GITLAB 설치
 ### VM과 로컬 PC의 디렉토리 공유
@@ -33,4 +47,5 @@ end
 #### DHCP 설정
 ### Plugin 설치 및 사용
 ### 기존 Box로 자체 신규 Box 만들기
+
 ### 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
