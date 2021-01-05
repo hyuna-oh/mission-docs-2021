@@ -44,7 +44,24 @@ end
 ### VM과 로컬 PC의 디렉토리 공유
 ### 네트워크 설정 변경
 #### Private IP 설정
-#### DHCP 설정
+* TODO
+```
+Vagrant.configure("2") do |config|
+  config.vm.network "private_network", type: "dhcp"
+end
+```
+```
+Vagrant.configure("2") do |config|
+  config.vm.network "private_network", ip: "192.168.50.4"
+end
+```
+#### DHCP 설정 (public)
+```
+Vagrant.configure("2") do |config|
+  config.vm.network "public_network",
+    use_dhcp_assigned_default_route: true
+end
+```
 ### Plugin 설치 및 사용
 ### 기존 Box로 자체 신규 Box 만들기
 
