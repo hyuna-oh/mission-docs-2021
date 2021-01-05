@@ -22,7 +22,6 @@ end
 ### VM의 설정 변경
 #### CORE
 #### MEMORY
-#### DISK (중요)
 1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
 2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
 * TODO
@@ -47,6 +46,13 @@ end
   v.name = "my_vm"
   # VirtualBox GUI에서의 name을 세팅할 수 있음
 end`` 
+#### DISK (중요)
+* DISK에는 여러가지 옵션이 있음. (참고 : https://www.vagrantup.com/docs/disks/configuration) *** 정리할 게 좀 많을듯?
+```
+config.vm.disk :disk, name: "backup", size: "10GB"
+config.vm.disk :dvd, name: "installer", path: "./installer.iso"
+config.vm.disk :floppy, name: "cool_files"
+```
 
 ### 포트 포워딩
 
