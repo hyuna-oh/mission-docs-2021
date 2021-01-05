@@ -12,7 +12,9 @@
 #### MEMORY
 #### DISK (중요)
 ### 포트 포워딩
+
 ### SSH 접속
+vagrant ssh로 접속
 ### GITLAB 설치
 ### VM과 로컬 PC의 디렉토리 공유
 ### 네트워크 설정 변경
