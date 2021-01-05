@@ -23,11 +23,13 @@ end
 #### CORE
 #### MEMORY
 #### DISK (중요)
+1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
+2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
 * TODO
 ```
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "bento/centos-7.4"
+  config.vm.box = "bento/centos-7.2"
   config.vm.provider "virtualbox" do |vb|
      vb.cpus = "4"
      vb.memory = "4096"
@@ -35,6 +37,7 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+3. ```vagrant up``` 명령어로 서버를 다시 올린다.
 ### 포트 포워딩
 
 ### SSH 접속
