@@ -4,7 +4,7 @@
 - 베이그런트는 가상화 소프트웨어 (버추얼박스, 도커 컨테이너, AWS 등)의 생성 및 유지보수를 위한 오픈소스 소프트웨어 제품
 - 루비 언어로 작성됨
 
-## 작업해볼 LIST
+## 작업 LIST
 ### Box로 VM 생성하기 (CentOS, Ubuntu 등)
  * Vagrantfile 을 로컬의 user 디렉토리 밑에 생성
  + 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 
@@ -23,7 +23,8 @@ end
 ### 포트 포워딩
 
 ### SSH 접속
- SSH 접속 Command : vagrant ssh 
+ * SSH 접속 Command
+ ```vagrant ssh``` 
 
 ### GITLAB 설치
 ### VM과 로컬 PC의 디렉토리 공유
