@@ -121,11 +121,6 @@ sudo gitlab-ctl status
 - Vagrantfile 
 ```
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
-    config.vm.hostname = "gitlab.local.dev"
-
-    ...중략...
-
     config.vm.provision "shell", path: "install_gitlab.sh"
 end
 ```
