@@ -143,22 +143,26 @@ end
 ```diff
 ! TODO
 ```
-* dhcp 방식으로 구성할 경우
-```
-Vagrant.configure("2") do |config|
-  config.vm.network "private_network", type: "dhcp"
-end
-```
 * static한 ip로 구성할 경우
 ```
 Vagrant.configure("2") do |config|
-  config.vm.network "private_network", ip: "192.168.50.4"
+  config.vm.network "private_network", ip: "192.168.33.10"
 end
 ```
+![image](https://user-images.githubusercontent.com/57924258/103777771-b818e600-5074-11eb-8a37-687d6eab8d13.png)
+* filezila로 접속 시
+  + 호스트 : sftp://192.168.33.10
+  + 사용자명/비밀번호 입력
 * 참고 : https://www.vagrantup.com/docs/networking/private_network
 ### 8.2. DHCP 설정
 ```diff
 ! TODO
+```
+* private ip를 DHCP 방식으로 구성할 경우
+```
+Vagrant.configure("2") do |config|
+  config.vm.network "private_network", type: "dhcp"
+end
 ```
 * public IP를 DHCP 방식으로 구현할 경우
 ```
