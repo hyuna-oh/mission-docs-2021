@@ -1,6 +1,6 @@
 # mission2021
 2021년에 공부한 내용들을 문서로 저장하는 곳.
-# 1. vagrant (2021.01.04 ~ 2021.01.10)
+# vagrant (2021.01.04 ~ 2021.01.10)
 * 베이그런트는 가상화 소프트웨어 (버추얼박스, 도커 컨테이너, AWS 등)의 생성 및 유지보수를 위한 오픈소스 소프트웨어 제품
 * 루비 언어로 작성됨
 * Provision : 게스트 머신을 반복적으로 생성하고 사용하기 위해 프로비져닝으로 만들어서 사용
@@ -26,6 +26,7 @@ Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/do
 
 ## 작업 LIST
 ### 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
+***
 * 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 (Vagrantfile 위치는 처음 Vagrant를 설치한 위치)
 ```
 Vagrant.configure("2") do |config|
