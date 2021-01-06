@@ -73,11 +73,10 @@ end
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
 (주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
-#### DISK (중요)
+#### DISK (중요) (https://www.vagrantup.com/docs/disks/configuration)
 ```diff
 ! TODO
 ```
-* DISK에는 여러가지 옵션이 있음. (참고 : https://www.vagrantup.com/docs/disks/configuration) *** 정리할 게 좀 많을듯?
 
 * disk types
 disk (symbol)
@@ -103,7 +102,7 @@ config.vm.disk :floppy, name: "cool_files"
 ```diff
 ! TODO
 ```
-### 7. VM과 로컬 PC의 디렉토리 공유
+### 7. VM과 로컬 PC의 디렉토리 공유 (https://www.vagrantup.com/docs/synced-folders/basic_usage)
 ```diff
 ! TODO
 ```
@@ -116,8 +115,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 * 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
-* 이외의 추가적인 옵션은 https://www.vagrantup.com/docs/synced-folders/basic_usage 를 확인
-### 8. 네트워크 설정 변경
+### 8. 네트워크 설정 변경 (https://www.vagrantup.com/docs/providers/virtualbox/networking)
 #### Private IP 설정
 ```diff
 ! TODO
@@ -132,7 +130,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.50.4"
 end
 ```
-#### DHCP 설정 (public)
+#### DHCP 설정
 ```diff
 ! TODO
 ```
