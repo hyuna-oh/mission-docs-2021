@@ -22,9 +22,9 @@ end
 ### VM의 설정 변경
 #### CORE
 #### MEMORY
+1. 방법1)
 1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
 2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
-* TODO
 ```
 Vagrant.configure("2") do |config|
 
@@ -48,14 +48,24 @@ config.vm.provider "virtualbox" do |v|
   # VirtualBox GUI에서의 name을 세팅할 수 있음
 end 
 ```
+2. 방법2) ```vagrant reload``` 명령어를 통해서도 서버를 다시 올릴 수 있다.
 
 #### DISK (중요)
 * DISK에는 여러가지 옵션이 있음. (참고 : https://www.vagrantup.com/docs/disks/configuration) *** 정리할 게 좀 많을듯?
+
+* disk types
+disk (symbol)
+dvd (symbol)
+floppy (symbol)
+
 ```
 config.vm.disk :disk, name: "backup", size: "10GB"
 config.vm.disk :dvd, name: "installer", path: "./installer.iso"
 config.vm.disk :floppy, name: "cool_files"
 ```
+
+* 
+
 
 ### 포트 포워딩
 
