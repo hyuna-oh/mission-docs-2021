@@ -3,6 +3,7 @@
 # 1. vagrant (2021.01.04 ~ 2021.01.10)
 * 베이그런트는 가상화 소프트웨어 (버추얼박스, 도커 컨테이너, AWS 등)의 생성 및 유지보수를 위한 오픈소스 소프트웨어 제품
 * 루비 언어로 작성됨
+* Provision : 게스트 머신을 반복적으로 생성하고 사용하기 위해 프로비져닝으로 만들어서 사용
 
 ## 작업 LIST
 ### 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
@@ -51,6 +52,7 @@ config.vm.provider "virtualbox" do |v|
 end 
 ```
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
+(※주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
 #### DISK (중요)
 ```diff
