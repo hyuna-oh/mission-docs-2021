@@ -130,10 +130,11 @@ end
 Vagrant.configure("2") do |config|
   # other config here
 
-  config.vm.synced_folder "src/", "/srv/website"
+  config.vm.synced_folder "data-vm/", "/data"
   # host 파일경로, guest 파일경로
 end
 ```
+![image](https://user-images.githubusercontent.com/57924258/103769489-b85eb480-5067-11eb-96eb-0af7477478cc.png)
 
 * 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
 * 참고 : https://www.vagrantup.com/docs/synced-folders/basic_usage
