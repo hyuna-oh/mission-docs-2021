@@ -73,7 +73,7 @@ end
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
 (주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
-#### DISK (중요) (https://www.vagrantup.com/docs/disks/configuration)
+#### DISK (중요)
 ```diff
 ! TODO
 ```
@@ -88,13 +88,13 @@ config.vm.disk :disk, name: "backup", size: "10GB"
 config.vm.disk :dvd, name: "installer", path: "./installer.iso"
 config.vm.disk :floppy, name: "cool_files"
 ```
-
+* 참고 : https://www.vagrantup.com/docs/disks/configuration
 
 ### 4. 포트 포워딩
 ```diff
 ! TODO
 ```
-
+* 참고 : https://www.vagrantup.com/docs/networking/forwarded_ports
 ### 5. SSH 접속
  * SSH 접속 Command : ```vagrant ssh``` 
 
@@ -102,7 +102,7 @@ config.vm.disk :floppy, name: "cool_files"
 ```diff
 ! TODO
 ```
-### 7. VM과 로컬 PC의 디렉토리 공유 (https://www.vagrantup.com/docs/synced-folders/basic_usage)
+### 7. VM과 로컬 PC의 디렉토리 공유
 ```diff
 ! TODO
 ```
@@ -115,7 +115,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 * 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
-### 8. 네트워크 설정 변경 (https://www.vagrantup.com/docs/providers/virtualbox/networking)
+* 참고 : https://www.vagrantup.com/docs/synced-folders/basic_usage
+### 8. 네트워크 설정 변경
 #### Private IP 설정
 ```diff
 ! TODO
@@ -130,6 +131,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.50.4"
 end
 ```
+* 참고 : https://www.vagrantup.com/docs/networking/private_network
 #### DHCP 설정
 ```diff
 ! TODO
