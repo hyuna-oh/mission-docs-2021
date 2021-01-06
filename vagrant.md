@@ -140,18 +140,15 @@ end
 * 참고 : https://www.vagrantup.com/docs/synced-folders/basic_usage
 ## 8. 네트워크 설정 변경
 ### 8.1. Private IP 설정
-```diff
-! TODO
-```
 * static한 ip로 구성할 경우
 ```
 Vagrant.configure("2") do |config|
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.xx.yy"
 end
 ```
-![image](https://user-images.githubusercontent.com/57924258/103777771-b818e600-5074-11eb-8a37-687d6eab8d13.png)
+![image](https://user-images.githubusercontent.com/57924258/103778324-6f156180-5075-11eb-8c88-49555bef93fd.png)
 * filezila로 접속 시
-  + 호스트 : sftp://192.168.33.10
+  + 호스트 : sftp://192.168.xx.yy
   + 사용자명/비밀번호 입력
 * 참고 : https://www.vagrantup.com/docs/networking/private_network
 ### 8.2. DHCP 설정
