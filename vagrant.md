@@ -126,9 +126,6 @@ end
 ! TODO 여기서 Gitlab-ctl 의 의미는? 그리고 Gitlab runner란?
 ```
 ## 7. VM과 로컬 PC의 디렉토리 공유
-```diff
-! TODO
-```
 ```
 Vagrant.configure("2") do |config|
   # other config here
@@ -137,6 +134,7 @@ Vagrant.configure("2") do |config|
   # host 파일경로, guest 파일경로
 end
 ```
+
 * 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
 * 참고 : https://www.vagrantup.com/docs/synced-folders/basic_usage
 ## 8. 네트워크 설정 변경
