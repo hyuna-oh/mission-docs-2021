@@ -88,6 +88,15 @@ config.vm.disk :floppy, name: "cool_files"
 ```diff
 ! TODO
 ```
+```
+Vagrant.configure("2") do |config|
+  # other config here
+
+  config.vm.synced_folder "src/", "/srv/website"
+  # host 파일경로, guest 파일경로
+end
+```
+이외의 추가적인 옵션은 https://www.vagrantup.com/docs/synced-folders/basic_usage 를 확인
 ### 8. 네트워크 설정 변경
 #### Private IP 설정
 ```diff
