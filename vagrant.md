@@ -91,7 +91,7 @@ config.vm.disk :floppy, name: "cool_files"
 * 참고 : https://www.vagrantup.com/docs/disks/configuration
 
 ### 4. 포트 포워딩
-- 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 동일하게 사용할 수 있다.
+- 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다.
 - 
 ```diff
 ! TODO
