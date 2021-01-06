@@ -171,23 +171,30 @@ end
 ```diff
 ! TODO
 ```
+- Plugin 설치
 ```
 # Installing a plugin from a known gem source
 $ vagrant plugin install my-plugin
-
-# Installing a plugin from a local file source
-$ vagrant plugin install /path/to/my-plugin.gem
-
+```
+![image](https://user-images.githubusercontent.com/57924258/103774310-b3056800-506f-11eb-8cdc-9ef154fc0934.png)
+- Plugin 사용
+```
 # Usage plugin
 # 플러그인의 사용법에 따라 달라질 수 있음
 # (provisioners should be available via config.vm.provision, etc.)
-
+```
+- Plugin 삭제
+```
 # Removing a plugin from a known gem source
 $ vagrant plugin uninstall my-plugin
-
+```
+- Plugin 업데이트
+```
 # Updating plugin
 $ vagrant plugin update NAME
-
+```
+- Plugin 리스트
+```
 # Listing plugin
 $ vagrant plugin list
 ```
