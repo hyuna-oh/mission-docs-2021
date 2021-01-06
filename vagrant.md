@@ -168,20 +168,19 @@ Vagrant.configure("2") do |config|
 end
 ```
 ## 9. Plugin 설치 및 사용
-```diff
-! TODO
-```
 - Plugin 설치
+  + vagrant-disksize : A Vagrant plugin to resize disks in VirtualBox
 ```
 # Installing a plugin from a known gem source
-$ vagrant plugin install my-plugin
+$ vagrant plugin install vagrant-disksize
 ```
 ![image](https://user-images.githubusercontent.com/57924258/103774310-b3056800-506f-11eb-8cdc-9ef154fc0934.png)
-- Plugin 사용
+- Plugin 사용 (Vagrantfile)
 ```
 # Usage plugin
-# 플러그인의 사용법에 따라 달라질 수 있음
-# (provisioners should be available via config.vm.provision, etc.)
+Vagrant.configure('2') do |config|
+  config.disksize.size = '50GB'
+end
 ```
 - Plugin 삭제
 ```
