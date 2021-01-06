@@ -36,7 +36,9 @@ end
 ```
 3. ```vagrant up``` 명령어로 서버를 다시 올린다.
 
-  + TIP : 다음의 설정으로 gui 및 name등을 세팅할 수 있다. (```diff !TODO```)
+  + TIP : 다음의 설정으로 gui 및 name등을 세팅할 수 있다. 
+  (```diff 
+  !TODO```)
 ```
 config.vm.provider "virtualbox" do |v|
   v.gui = true 
