@@ -52,7 +52,7 @@ config.vm.provider "virtualbox" do |v|
 end 
 ```
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
-(※주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
+(주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
 #### DISK (중요)
 ```diff
