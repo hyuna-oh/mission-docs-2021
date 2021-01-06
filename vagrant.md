@@ -16,6 +16,9 @@ end
 (여기서 init 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
 * 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성
 ### VM 삭제
+```diff
+! TODO
+```
 * 삭제 명령어 : ```vagrant box remove NAME``` 
 ### VM의 설정 변경
 #### CORE
