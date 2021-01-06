@@ -39,7 +39,7 @@ end
 ```
 * 삭제 명령어 : ```vagrant box remove NAME``` 
 ## 3. VM의 설정 변경
-### CORE & MEMORY 
+### 3.1. CORE & MEMORY 
 * 방법1)
 1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
 2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
@@ -71,7 +71,7 @@ end
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
 (주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
-### DISK (중요)
+### 3.2. DISK (중요)
 ```diff
 ! TODO
 ```
@@ -140,7 +140,7 @@ end
 * 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
 * 참고 : https://www.vagrantup.com/docs/synced-folders/basic_usage
 ## 8. 네트워크 설정 변경
-### Private IP 설정
+### 8.1. Private IP 설정
 ```diff
 ! TODO
 ```
@@ -157,7 +157,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 * 참고 : https://www.vagrantup.com/docs/networking/private_network
-### DHCP 설정
+### 8.2. DHCP 설정
 ```diff
 ! TODO
 ```
