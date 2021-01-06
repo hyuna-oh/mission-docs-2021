@@ -109,6 +109,26 @@ end
 ```diff
 ! TODO
 ```
+- install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.
+- install_gitlab.sh
+```
+echo ==== Installing GitLab CE =================================================
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo apt-get install -y gitlab-ce
+sudo gitlab-ctl reconfigure
+sudo gitlab-ctl status
+```
+- Vagrantfile 
+```
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/xenial64"
+    config.vm.hostname = "gitlab.local.dev"
+
+    ...중략...
+
+    config.vm.provision "shell", path: "install_gitlab.sh"
+end
+```
 ### 7. VM과 로컬 PC의 디렉토리 공유
 ```diff
 ! TODO
@@ -128,11 +148,13 @@ end
 ```diff
 ! TODO
 ```
+* dhcp 방식으로 구성할 경우
 ```
 Vagrant.configure("2") do |config|
   config.vm.network "private_network", type: "dhcp"
 end
 ```
+* static한 ip로 구성할 경우
 ```
 Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.50.4"
