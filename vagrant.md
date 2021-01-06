@@ -5,7 +5,7 @@
 * 루비 언어로 작성됨
 
 ## 작업 LIST
-### Box로 VM 생성하기 (CentOS, Ubuntu 등)
+### 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
 * 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 (Vagrantfile 위치는 처음 Vagrant를 설치한 위치)
 ```
 Vagrant.configure("2") do |config|
@@ -15,14 +15,13 @@ end
 ```
 (여기서 init 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
 * 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성
-### VM 삭제
+### 2. VM 삭제
 ```diff
 ! TODO
 ```
 * 삭제 명령어 : ```vagrant box remove NAME``` 
-### VM의 설정 변경
-#### CORE
-#### MEMORY
+### 3. VM의 설정 변경
+#### CORE & MEMORY 
 * 방법1)
 1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
 2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
@@ -71,23 +70,23 @@ config.vm.disk :floppy, name: "cool_files"
 ```
 
 
-### 포트 포워딩
+### 4. 포트 포워딩
 ```diff
 ! TODO
 ```
 
-### SSH 접속
+### 5. SSH 접속
  * SSH 접속 Command : ```vagrant ssh``` 
 
-### GITLAB 설치
+### 6. GITLAB 설치
 ```diff
 ! TODO
 ```
-### VM과 로컬 PC의 디렉토리 공유
+### 7. VM과 로컬 PC의 디렉토리 공유
 ```diff
 ! TODO
 ```
-### 네트워크 설정 변경
+### 8. 네트워크 설정 변경
 #### Private IP 설정
 ```diff
 ! TODO
@@ -112,7 +111,7 @@ Vagrant.configure("2") do |config|
     use_dhcp_assigned_default_route: true
 end
 ```
-### Plugin 설치 및 사용
+### 9. Plugin 설치 및 사용
 ```diff
 ! TODO
 ```
@@ -139,7 +138,7 @@ $ vagrant plugin list
 
 Note: In the future, the ```vagrant plugin``` command will include a subcommand that will document the components that each plugin installs.
 
-### 기존 Box로 자체 신규 Box 만들기
+### 10. 기존 Box로 자체 신규 Box 만들기
 ```diff
 ! TODO
 ```
@@ -152,7 +151,7 @@ config.vm.provider "virtualbox" do |v|
 end
 ```
 
-### 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
+### 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
 ```diff
 ! TODO
 ```
