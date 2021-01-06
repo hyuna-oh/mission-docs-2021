@@ -10,9 +10,9 @@ Vagrant.configure("2") do |config|
   # ...
 end
 ```
-  - 여기서, configure("2")는 버전을 의미함.
-  - 최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
-  - 또한, 버전별로 지원하는 configuration이 다름. 그렇기 때문에, 부득이하게 버전 1과 2의 configuration을 사용해야 한다면 다음과 같이 사용해야 함.
+  *여기서, configure("2")는 버전을 의미함.
+  *최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
+  *또한, 버전별로 지원하는 configuration이 다름. 그렇기 때문에, 부득이하게 버전 1과 2의 configuration을 사용해야 한다면 다음과 같이 사용해야 함.
 ```
 Vagrant.configure("1") do |config|
   # v1 configs...
