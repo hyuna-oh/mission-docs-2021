@@ -7,7 +7,7 @@
 ## 작업 LIST
 ### Box로 VM 생성하기 (CentOS, Ubuntu 등)
 * Vagrantfile 을 로컬의 user 디렉토리 밑에 생성
-+ 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 
+  + 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 
 ```
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/centos-7.2"
@@ -15,14 +15,14 @@ Vagrant.configure("2") do |config|
 end
 ```
 (여기서 init 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
-+ 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (*** TODO : 디렉토리 한번 확인해보기)
+  + 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (*** TODO : 디렉토리 한번 확인해보기)
 ### VM 삭제
 * 삭제 명령어 : ```vagrant box remove NAME``` 
 * 예시 : TODO
 ### VM의 설정 변경
 #### CORE
 #### MEMORY
-+ 방법1)
+  + 방법1)
 1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
 2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
 ```
@@ -48,7 +48,7 @@ config.vm.provider "virtualbox" do |v|
   # VirtualBox GUI에서의 name을 세팅할 수 있음
 end 
 ```
-+ 방법2) ```vagrant reload``` 명령어를 통해서도 서버를 다시 올릴 수 있다.
+  + 방법2) ```vagrant reload``` 명령어를 통해서도 서버를 다시 올릴 수 있다.
 
 #### DISK (중요)
 * DISK에는 여러가지 옵션이 있음. (참고 : https://www.vagrantup.com/docs/disks/configuration) *** 정리할 게 좀 많을듯?
