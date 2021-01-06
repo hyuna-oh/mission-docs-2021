@@ -1,5 +1,3 @@
-# mission2021
-2021년에 공부한 내용들을 문서로 저장하는 곳.
 # vagrant (2021.01.04 ~ 2021.01.10)
 * 베이그런트는 가상화 소프트웨어 (버추얼박스, 도커 컨테이너, AWS 등)의 생성 및 유지보수를 위한 오픈소스 소프트웨어 제품
 * 루비 언어로 작성됨
@@ -23,10 +21,9 @@ Vagrant.configure("2") do |config|
 end
 ```
 Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/docs/vagrantfile/version
-
-## 작업 LIST
-### 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
 ***
+# 작업 LIST
+## 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
 * 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 (Vagrantfile 위치는 처음 Vagrant를 설치한 위치)
 ```
 Vagrant.configure("2") do |config|
@@ -36,13 +33,13 @@ end
 ```
 (여기서 init 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
 * 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성
-### 2. VM 삭제
+## 2. VM 삭제
 ```diff
 ! TODO
 ```
 * 삭제 명령어 : ```vagrant box remove NAME``` 
-### 3. VM의 설정 변경
-#### CORE & MEMORY 
+## 3. VM의 설정 변경
+### CORE & MEMORY 
 * 방법1)
 1. 일단 box가 실행중이라면, ```vagrant halt``` 명령어를 통해 서버를 내린다.
 2. 그리고 기존 Vagrantfile 에 다음의 내용을 작성한다. 
@@ -74,7 +71,7 @@ end
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
 (주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
-#### DISK (중요)
+### DISK (중요)
 ```diff
 ! TODO
 ```
@@ -91,7 +88,7 @@ config.vm.disk :floppy, name: "cool_files"
 ```
 * 참고 : https://www.vagrantup.com/docs/disks/configuration
 
-### 4. 포트 포워딩
+## 4. 포트 포워딩
 - 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다.
 - 
 ```diff
@@ -103,10 +100,10 @@ Vagrant.configure("2") do |config|
 end
 ```
 * 참고 : https://www.vagrantup.com/docs/networking/forwarded_ports
-### 5. SSH 접속
+## 5. SSH 접속
  * SSH 접속 Command : ```vagrant ssh``` 
 
-### 6. GITLAB 설치
+## 6. GITLAB 설치
 ```diff
 ! TODO
 ```
@@ -128,7 +125,7 @@ end
 ```diff
 ! TODO 여기서 Gitlab-ctl 의 의미는? 그리고 Gitlab runner란?
 ```
-### 7. VM과 로컬 PC의 디렉토리 공유
+## 7. VM과 로컬 PC의 디렉토리 공유
 ```diff
 ! TODO
 ```
@@ -142,8 +139,8 @@ end
 ```
 * 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
 * 참고 : https://www.vagrantup.com/docs/synced-folders/basic_usage
-### 8. 네트워크 설정 변경
-#### Private IP 설정
+## 8. 네트워크 설정 변경
+### Private IP 설정
 ```diff
 ! TODO
 ```
@@ -160,7 +157,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 * 참고 : https://www.vagrantup.com/docs/networking/private_network
-#### DHCP 설정
+### DHCP 설정
 ```diff
 ! TODO
 ```
@@ -171,7 +168,7 @@ Vagrant.configure("2") do |config|
     use_dhcp_assigned_default_route: true
 end
 ```
-### 9. Plugin 설치 및 사용
+## 9. Plugin 설치 및 사용
 ```diff
 ! TODO
 ```
@@ -198,7 +195,7 @@ $ vagrant plugin list
 
 Note: In the future, the ```vagrant plugin``` command will include a subcommand that will document the components that each plugin installs.
 
-### 10. 기존 Box로 자체 신규 Box 만들기
+## 10. 기존 Box로 자체 신규 Box 만들기
 ```diff
 ! TODO 이게 맞는지 잘 모르겠는데.. 다른 방법도 찾아보자
 ```
@@ -211,7 +208,7 @@ config.vm.provider "virtualbox" do |v|
 end
 ```
 
-### 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
+## 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
 ```diff
 ! TODO
 ```
