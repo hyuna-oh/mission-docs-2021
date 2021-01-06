@@ -17,7 +17,7 @@ end
 * 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성 (*** TODO : 디렉토리 한번 확인해보기)
 ### VM 삭제
 * 삭제 명령어 : ```vagrant box remove NAME``` 
-* 예시 : TODO
+*TODO*
 ### VM의 설정 변경
 #### CORE
 #### MEMORY
@@ -37,7 +37,7 @@ end
 ```
 3. ```vagrant up``` 명령어로 서버를 다시 올린다.
 
-  + TIP : 다음의 설정으로 gui 및 name등을 세팅할 수 있다.
+  + TIP : 다음의 설정으로 gui 및 name등을 세팅할 수 있다. (*TODO*)
 ```
 config.vm.provider "virtualbox" do |v|
   v.gui = true 
@@ -49,6 +49,7 @@ end
 * 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
 
 #### DISK (중요)
+*TODO*
 * DISK에는 여러가지 옵션이 있음. (참고 : https://www.vagrantup.com/docs/disks/configuration) *** 정리할 게 좀 많을듯?
 
 * disk types
@@ -72,7 +73,7 @@ config.vm.disk :floppy, name: "cool_files"
 ### VM과 로컬 PC의 디렉토리 공유
 ### 네트워크 설정 변경
 #### Private IP 설정
-+TODO
+*TODO*
 ```
 Vagrant.configure("2") do |config|
   config.vm.network "private_network", type: "dhcp"
