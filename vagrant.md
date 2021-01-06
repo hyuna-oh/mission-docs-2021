@@ -5,14 +5,15 @@
 * 루비 언어로 작성됨
 * Provision : 게스트 머신을 반복적으로 생성하고 사용하기 위해 프로비져닝으로 만들어서 사용
 * Vagrant.configure("2") 의 의미
+  + 여기서, configure("2")는 버전을 의미함.
+  + 최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
+  + 또한, 버전별로 지원하는 configuration이 다름. 그렇기 때문에, 부득이하게 버전 1과 2의 configuration을 사용해야 한다면 다음과 같이 사용해야 함.
 ```
 Vagrant.configure("2") do |config|
   # ...
 end
 ```
-  *여기서, configure("2")는 버전을 의미함.
-  *최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
-  *또한, 버전별로 지원하는 configuration이 다름. 그렇기 때문에, 부득이하게 버전 1과 2의 configuration을 사용해야 한다면 다음과 같이 사용해야 함.
+ 
 ```
 Vagrant.configure("1") do |config|
   # v1 configs...
@@ -22,7 +23,7 @@ Vagrant.configure("2") do |config|
   # v2 configs...
 end
 ```
-나머지 버전에 관한 정보 : https://www.vagrantup.com/docs/vagrantfile/version
+Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/docs/vagrantfile/version
 
 ## 작업 LIST
 ### 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
