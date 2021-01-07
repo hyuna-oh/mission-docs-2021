@@ -104,17 +104,19 @@ end
  * SSH 접속 Command : ```vagrant ssh``` 
 
 ## 6. GITLAB 설치
-```diff
-! TODO
-```
 - install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.
 - install_gitlab.sh
 ```
 echo ==== Installing GitLab CE =================================================
-curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-sudo apt-get install -y gitlab-ce
+wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-13.4.7-ce.0.el7.x86_64.rpm/download.rpm
+yum install -y epel-release
+yum install -y curl policycoreutils-python openssh-server postfix
+systemctl enable sshd
+systemctl enable postfix
+systemctl start sshd
+systemctl start postfix
+sudo yum install gitlab-ce-13.4.7-ce.0.el7.x86_64.rpm
 sudo gitlab-ctl reconfigure
-sudo gitlab-ctl status
 ```
 - Vagrantfile 
 ```
@@ -122,9 +124,17 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "install_gitlab.sh"
 end
 ```
-```diff
-! TODO 여기서 Gitlab-ctl 의 의미는? 그리고 Gitlab runner란?
+- 로그 메시지
 ```
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 567/1530 resources updated in 03 minutes 44 seconds
+gitlab Reconfigured!
+```
+* gitlab-ctl reconfigure ? 설정이 초기에 제공된 것과 동일한 형태로 설정이 되어있는지 확인 후 초기에 제공된 것과 동일하게 설정함.
+* 여기서 el7 의 의미는? Red Hat 7.x, CentOS 7.x, and CloudLinux 7.x
+* ***TODO*** 그리고 Gitlab runner란?
+
 ## 7. VM과 로컬 PC의 디렉토리 공유
 ```
 Vagrant.configure("2") do |config|
