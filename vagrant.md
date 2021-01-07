@@ -164,9 +164,6 @@ end
   + 사용자명/비밀번호 입력
 * 참고 : https://www.vagrantup.com/docs/networking/private_network
 ### 8.2. DHCP 설정
-```diff
-! TODO
-```
 * private ip를 DHCP 방식으로 구성할 경우
 ```
 Vagrant.configure("2") do |config|
