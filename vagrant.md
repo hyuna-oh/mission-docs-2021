@@ -92,8 +92,12 @@ config.vm.disk :floppy, name: "cool_files"
 - 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다.
 ```
 Vagrant.configure("2") do |config|
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 8080, host: 80
 end
+```
+- ```vagrant up```으로 실행하면 다음과 같이 터널링하여 사용할 수 있다.
+```
+vagrant sudo ssh -- -L 80:localhost:8080
 ```
 **TODO** 포트포워딩을 사용하는 이유는?
 * 참고 : https://www.vagrantup.com/docs/networking/forwarded_ports
