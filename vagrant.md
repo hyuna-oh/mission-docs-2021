@@ -90,14 +90,14 @@ config.vm.disk :floppy, name: "cool_files"
 
 ## 4. 포트 포워딩
 - 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다.
-- 
-```diff
-! TODO
-```
 ```
 Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 end
+```
+- window에서 다음의 command ```netstat -a -b```를 실행했을 경우
+```
+  TCP    0.0.0.0:80             DESKTOP-G85CPR1:0      LISTENING
 ```
 * 참고 : https://www.vagrantup.com/docs/networking/forwarded_ports
 ## 5. SSH 접속
