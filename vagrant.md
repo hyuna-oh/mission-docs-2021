@@ -170,7 +170,6 @@ end
 ```
 ## 9. Plugin 설치 및 사용
 - Plugin 설치
-  + vagrant-disksize : A Vagrant plugin to resize disks in VirtualBox
 ```
 C:\...\hyunaoh>vagrant plugin install vagrant-global-status
 Installing the 'vagrant-global-status' plugin. This can take a few minutes...
