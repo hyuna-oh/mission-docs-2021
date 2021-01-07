@@ -172,16 +172,20 @@ end
 - Plugin 설치
   + vagrant-disksize : A Vagrant plugin to resize disks in VirtualBox
 ```
-# Installing a plugin from a known gem source
-$ vagrant plugin install vagrant-disksize
+C:\...\hyunaoh>vagrant plugin install vagrant-global-status
+Installing the 'vagrant-global-status' plugin. This can take a few minutes...
+Fetching vagrant-vbguest-0.29.0.gem
+Fetching vagrant-global-status-0.1.4.gem
+Successfully uninstalled vagrant-vbguest-0.29.0
+Installed the plugin 'vagrant-global-status (0.1.4)'!
 ```
-![image](https://user-images.githubusercontent.com/57924258/103774310-b3056800-506f-11eb-8cdc-9ef154fc0934.png)
-- Plugin 사용 (Vagrantfile)
+- Plugin 사용 
 ```
-# Usage plugin
-Vagrant.configure('2') do |config|
-  config.disksize.size = '50GB'
-end
+C:\...\hyunaoh>vagrant global-status --timestamp
+
+C:/.../hyunaoh
+  default      running      (virtualbox)   2021-01-07 09:46:01 +0900
+
 ```
 - Plugin 삭제
 ```
@@ -190,13 +194,18 @@ $ vagrant plugin uninstall my-plugin
 ```
 - Plugin 업데이트
 ```
-# Updating plugin
-$ vagrant plugin update NAME
+C:\...\hyunaoh>vagrant plugin update vagrant-global-status
+Updating plugins: vagrant-global-status. This may take a few minutes...
+Fetching vagrant-vbguest-0.29.0.gem
+Successfully uninstalled vagrant-vbguest-0.28.0
+Updated 'vagrant-vbguest' to version '0.29.0'!
 ```
 - Plugin 리스트
 ```
-# Listing plugin
-$ vagrant plugin list
+C:\...\hyunaoh>vagrant plugin list
+vagrant-disksize (0.1.3, global)
+vagrant-global-status (0.1.4, global)
+vagrant-vbguest (0.28.0, global)
 ```
 
 **Note** : 향후에는 ```vagrant plugin``` 명령어가 각 플러그인을 설치할 때 서브명령어에 포함될 예정이다.
