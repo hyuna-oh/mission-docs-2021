@@ -95,10 +95,6 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 end
 ```
-- window에서 다음의 command ```netstat -a -b```를 실행했을 경우
-```
-  TCP    0.0.0.0:80             DESKTOP-G85CPR1:0      LISTENING
-```  
 **TODO** 포트포워딩을 사용하는 이유는?
 * 참고 : https://www.vagrantup.com/docs/networking/forwarded_ports
 ## 5. SSH 접속
