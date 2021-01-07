@@ -132,8 +132,8 @@ Chef Infra Client finished, 567/1530 resources updated in 03 minutes 44 seconds
 gitlab Reconfigured!
 ```
 * gitlab-ctl reconfigure ? 설정이 초기에 제공된 것과 동일한 형태로 설정이 되어있는지 확인 후 초기에 제공된 것과 동일하게 설정함.
-* 여기서 el7 의 의미는? Red Hat 7.x, CentOS 7.x, and CloudLinux 7.x
-**TODO** 그리고 Gitlab runner란?
+* 여기서 el7 의 의미는? Red Hat 7.x, CentOS 7.x, and CloudLinux 7.x  
+**TODO** 그리고 Gitlab runner란?  
 **NOTE** rpm 파일이 있다면 'rpm -Uvh' 대신 'yum localinstall' 을 실행해 패키지를 설치할 수 있다. 좋은 점은 현재 디렉터리의 rpm 파일에 의존성 문제가 있을 때, 문제를 해결할 수 있는 파일을 인터넷에서 다운로드해서 설치해준다는 점이다. 'rpm -Uvh rpm파일이름.rpm' 대신에 사용하면 된다.
 (출처: https://linuxstory1.tistory.com/entry/편리하게-패키지를-설치하는-YUM [Linux 세상속으로])
 
