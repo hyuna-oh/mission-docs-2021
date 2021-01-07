@@ -97,9 +97,9 @@ end
 ```
 - ```vagrant up```으로 실행하면 다음과 같이 터널링하여 사용할 수 있다.
 ```
-vagrant sudo ssh -- -L 80:localhost:8080
+vagrant ssh -- -L 80:localhost:8080
 ```
-**TODO** 포트포워딩을 사용하는 이유는?
+* 포트포워딩을 사용하는 이유는? https://lamanus.kr/59 => 쉽게 말해 특정 포트를 통해 공유기를 통해 원하는 서버에 접속할 때 필요함.
 * 참고 : https://www.vagrantup.com/docs/networking/forwarded_ports
 ## 5. SSH 접속
  * SSH 접속 Command : ```vagrant ssh``` 
@@ -177,8 +177,7 @@ end
 * public IP를 DHCP 방식으로 구현할 경우
 ```
 Vagrant.configure("2") do |config|
-  config.vm.network "public_network",
-    use_dhcp_assigned_default_route: true
+  config.vm.network "public_network"
 end
 ```
 ## 9. Plugin 설치 및 사용
