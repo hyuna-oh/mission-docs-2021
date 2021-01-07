@@ -159,7 +159,6 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.xx.yy"
 end
 ```
-![image](https://user-images.githubusercontent.com/57924258/103778324-6f156180-5075-11eb-8c88-49555bef93fd.png)
 * filezila로 접속 시
   + 호스트 : sftp://192.168.xx.yy
   + 사용자명/비밀번호 입력
@@ -179,6 +178,17 @@ end
 Vagrant.configure("2") do |config|
   config.vm.network "public_network"
 end
+```
+* ifconfig 명령어로 조회한 결과 (private network를 사용했을 때)
+```
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.28.xx.yy  netmask 255.255.255.0  broadcast 172.28.128.255
+        inet6 fe80::a00:27ff:fee4:d7b2  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:e4:d7:b2  txqueuelen 1000  (Ethernet)
+        RX packets 132  bytes 13102 (12.7 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 65  bytes 10198 (9.9 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 ## 9. Plugin 설치 및 사용
 - Plugin 설치
