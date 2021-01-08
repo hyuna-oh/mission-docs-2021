@@ -266,9 +266,12 @@ vagrant init mynewbox
 ```diff
 ! TODO
 ```
-1. 신규 Box 파일을 웹 서버에 올리기
+1. Vagrant를 통해 웹 서버를 설치
 
+```
+```
 
+*share 관련 참고 : https://www.vagrantup.com/docs/share/http
 *참고 : 코드 색상표
 ```diff
 - text in red
