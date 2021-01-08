@@ -101,12 +101,14 @@ end
 * 참고 : https://www.vagrantup.com/docs/disks/configuration
 
 ## 4. 포트 포워딩
-- 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다.
+- 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다. 설정 후엔 `vagrant reload`를 한다.
 ```
 Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8080, host: 80
 end
 ```
+- localhost에서 웹 브라우저에 다음의 url을 입력하면 접속이 가능하다.
+`http://127.0.0.1:80`
 - ```vagrant up```으로 실행하면 다음과 같이 터널링하여 사용할 수 있다.
 ```
 vagrant ssh -- -L 80:localhost:8080
@@ -264,6 +266,8 @@ vagrant init mynewbox
 ```diff
 ! TODO
 ```
+1. 신규 Box 파일을 웹 서버에 올리기
+
 
 *참고 : 코드 색상표
 ```diff
