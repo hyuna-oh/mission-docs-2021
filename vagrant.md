@@ -251,7 +251,12 @@ vagrant package --output mynew.box
 ```
 vagrant box add mynewbox mynew.box
 ```
-
+3. 이 box를 새로 사용하기 위해서 기존의 박스를 제거하고 init 명령어로 add한  새로 설정한다.
+```
+vagrant destroy
+rm Vagrantfile
+vagrant init mynewbox
+```
 - add box 명령어 참고 : https://www.vagrantup.com/docs/cli/box#box-add
 - add box 전에 box를 가볍게 만드려면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
 ## 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
