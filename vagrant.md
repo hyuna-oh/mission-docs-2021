@@ -38,6 +38,7 @@ end
 ! TODO
 ```
 * 삭제 명령어 : ```vagrant box remove NAME``` 
+**NOTE** The ```destroy``` command does not remove a box that may have been installed on your computer during vagrant up. Thus, even if you run vagrant destroy, the box installed in the system will still be present on the hard drive. To return your computer to the state as it was before vagrant up command, you need to use vagrant box remove.
 ## 3. VM의 설정 변경
 ### 3.1. CORE & MEMORY 
 * 방법1)
