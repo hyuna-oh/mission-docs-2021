@@ -266,3 +266,4 @@ vagrant box add mynewbox mynew.box
 ! text in orange
 # text in gray
 ```
+* vagrant 관련 설명이 잘 되어 있는 article : https://tech.osteel.me/posts/how-to-use-vagrant-for-local-web-development#port-forwarding
