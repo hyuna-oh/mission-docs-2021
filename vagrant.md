@@ -78,16 +78,10 @@ end
 - 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.
 **Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다. 
 ```
-config.vm.disk :disk, size: "100GB", primary: true
-```
-- 다음은 box명과 메인 디스크 크기를 함께 설정한 예시이다.
-- ## TODO : provider?
-```
 Vagrant.configure("2") do |config|
   config.vm.define "hashicorp" do |h|
     h.vm.box = "hashicorp/bionic64"
-    h.vm.provider :virtualbox 
-
+    h.vm.provider "virtualbox"
     h.vm.disk :disk, size: "100GB", primary: true
   end
 end
@@ -97,8 +91,8 @@ end
 Vagrant.configure("2") do |config|
   config.vm.define "hashicorp" do |h|
     h.vm.box = "hashicorp/bionic64"
-    h.vm.provider :virtualbox
-
+    # h.vm.provider :virtualbox
+    h.vm.provider "virtualbox"
     h.vm.disk :disk, size: "10GB", name: "extra_storage"
   end
 end
