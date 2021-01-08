@@ -25,21 +25,21 @@ Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/do
 ***
 # 작업 LIST
 ## 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
-* 방법1) vagrant init bento/centos-7.4 명령어로 Vagrantfile을 생성 후 생성된 파일에 다음의 내용 작성 (Vagrantfile 위치는 처음 Vagrant를 설치한 위치)
+- ```vagrant init bento/centos-7.4``` 명령어로 VM 생성하면, bento/centos-7.4 box가 자동으로 생성됨. (```vagrant box list```를 통해 확인이 가능함)
+- 또한 다음의 Vagrantfile이 생성됨.
 ```
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/centos-7.2"
-  config.vm.box_version = "2.3.1"
+  config.vm.box = "bento/centos-7.4"
 end
 ```
-(여기서 init 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
-* 방법2) vagrant가 설치된 디렉토리 상위 폴더에 Vagrantfile을 직접 생성하여 작성
+(여기서 Vagrantfile 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
+
 ## 2. VM 삭제
 ```diff
 ! TODO
 ```
 * 삭제 명령어 : ```vagrant box remove NAME``` 
-**NOTE** The ```destroy``` command does not remove a box that may have been installed on your computer during vagrant up. Thus, even if you run vagrant destroy, the box installed in the system will still be present on the hard drive. To return your computer to the state as it was before vagrant up command, you need to use vagrant box remove.
+**NOTE** The ```vagrant destroy``` 명령어는 ```vagrant up``` 명령어가 진행되는 동안 설치된 박스를 제거하지 않는다. 그러므로 만약 vagrant destroy를 실행한다면, 해당 박스는 하드드라이브에 그대로 설치되어 있을 것이다. 그렇기에 삭제하려면 vagrant up 명령어를 수행하기 전에 box를 삭제해야 한다.
 ## 3. VM의 설정 변경
 ### 3.1. CORE & MEMORY 
 * 방법1)
