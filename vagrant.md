@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/docs/vagrantfile/version
+* What is Box? package 포맷의 Vagrant 환경설정을 말한다. 이 박스는 누구든지 어떤 플랫폼에서든 동일한 환경을 생성할 수 있게 만들어준다. 그래서, 주로 해당 VM의 BOX를 package 포맷으로 생성한 뒤 이를 ```vagrant init 박스명``` 과 같이 사용한다.
 ***
 # 작업 LIST
 ## 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
