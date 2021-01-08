@@ -246,9 +246,6 @@ vagrant-vbguest (0.28.0, global)
 **Note** : 향후에는 ```vagrant plugin``` 명령어가 각 플러그인을 설치할 때 서브명령어에 포함될 예정이다.
 
 ## 10. 기존 Box로 자체 신규 Box 만들기
-```diff
-! TODO 
-```
 1. vagrant 로 기존의 BOX를 pacakge화 하여 저장한다.
 ```
 vagrant package --output mynew.box
@@ -264,7 +261,7 @@ rm Vagrantfile
 vagrant init mynewbox
 ```
 - add box 명령어 참고 : https://www.vagrantup.com/docs/cli/box#box-add
-- add box 전에 box를 가볍게 만드려면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
+- add box 전에 box를 경량화 하고자 한다면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
 ## 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
 ```diff
 ! TODO
