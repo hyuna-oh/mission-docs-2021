@@ -77,10 +77,12 @@ end
 ```diff
 ! TODO
 ```
-- 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.
-**Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다. 
-**Note** : 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면, 
-```config.vm.disk :disk, size: "50GB", primary: true```만 작성해야한다.
+- 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.  
+**Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다.  
+**Note** : 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면,  
+```config.vm.disk :disk, size: "50GB", primary: true```만 작성해야한다.  
+**Note** : 디스크 크기를 줄일 수는 없다.  
+**Note** : iso 형태의 디스크를 추가할 수 있다.
 ```
 Vagrant.configure("2") do |config|
   config.vm.define "hashicorp" do |h|
