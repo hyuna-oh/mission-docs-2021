@@ -248,11 +248,11 @@ vagrant-vbguest (0.28.0, global)
 ```
 vagrant package --output mynew.box
 ```
-2. 저장한 후 box add 명령어를 통해 해당 패키지를 add한다.
+2. 신규 box를 생성한다.
 ```
 vagrant box add mynewbox mynew.box
 ```
-3. 이 box를 새로 사용하기 위해서 기존의 박스를 제거하고 init 명령어로 add한  새로 설정한다.
+3. 신규 box를 사용하기 위해서 기존의 박스를 제거하고 init 명령어로 신규 box를 설정한다.
 ```
 vagrant destroy
 rm Vagrantfile
