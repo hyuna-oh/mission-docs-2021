@@ -34,11 +34,11 @@ end
 (여기서 Vagrantfile 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
 
 ## 2. VM 삭제
-```diff
-! TODO
-```
-* 삭제 명령어 : ```vagrant box remove NAME``` 
-**NOTE** The ```vagrant destroy``` 명령어는 ```vagrant up``` 명령어가 진행되는 동안 설치된 박스를 제거하지 않는다. 그러므로 만약 vagrant destroy를 실행한다면, 해당 박스는 하드드라이브에 그대로 설치되어 있을 것이다. 그렇기에 삭제하려면 vagrant up 명령어를 수행하기 전에 box를 삭제해야 한다.
+* VM 삭제 명령어 : ```vagrant destroy VM명/ID``` 명령어를 통해 삭제할 수 있다.  
+**NOTE** The ```vagrant destroy``` 명령어는 ```vagrant up``` 명령어가 진행되는 동안 설치된 박스를 제거하지 않는다. 그러므로 만약 삭제하려면 vagrant up 명령어를 수행하기 전에 box를 삭제해야 한다.
+**Note** vagrant를 통해 생성된 VM만 삭제가 가능한것으로 보인다.
+* box 삭제 명령어 : ```vagrant box remove NAME``` 
+
 ## 3. VM의 설정 변경
 ### 3.1. CORE & MEMORY 
 * 방법1)
