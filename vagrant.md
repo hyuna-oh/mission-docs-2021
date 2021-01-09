@@ -74,19 +74,26 @@ end
 (주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
 ### 3.2. DISK (중요)
-```diff
-! TODO
-```
 - 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.  
 **Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다.  
 **Note** : 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면,  
 ```config.vm.disk :disk, size: "50GB", primary: true```만 작성해야한다.  
-**Note** : 디스크 크기를 줄일 수는 없다.  
+**Note** : 디스크 크기를 줄일 수는 없다.
 **Note** : iso 형태의 디스크를 추가할 수 있다.
+- 다음의 코드를 Vagrantfile에 추가한다.
+- 이 기능은 현재 실험용 플래그를 사용해야한다. 실험용 플래그는 다음과 같이 설정할 수 있다.
+```
+ENV['VAGRANT_EXPERIMENTAL'] = 'disks'
+Vagrant.configure("2") do |config|
+... 생략 ...
+```
+- 추가 한 뒤 다음의 코드도 추가한다.
 ```
 Vagrant.configure("2") do |config|
   config.vm.define "hashicorp" do |h|
+    # box명을 입력해야 함. (이 때, 다르게 입력하면 새로운 디스크를 가진 서버가 생성됨.)
     h.vm.box = "hashicorp/bionic64"
+    # provider는 필수값은 아님.
     h.vm.provider "virtualbox"
     h.vm.disk :disk, size: "100GB", primary: true
   end
