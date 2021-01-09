@@ -289,12 +289,23 @@ vagrant init mynewbox
 ```diff
 ! TODO
 ```
-1. Vagrant를 통해 웹 서버를 설치
-
+1. localhost에 웹 서버를 설치
+- Windows 10 에서 웹 서버 구축하기
+- http://apachelounge.com/download/에 들어가서 64비트로 설치
+- C:/Server/Apache24/conf/httpd.conf 를 수정한다.
 ```
+ServerRoot "c:/Server/Apache24"
+Listen 80
+ServerAdmin 000@gmail.com
+ServerName 127.0.0.1:80
+DocumentRoot "c:/Server/Apache24/htdocs"
+ErrorLog "logs/error.log" 
 ```
-
-*share 관련 참고 : https://www.vagrantup.com/docs/share/http
+- 환경변수를 설정한다. (시스템변수 - path - C:\Apache24\bin)
+- 권리자 권한으로 cmd창을 열고 ```httpd.exe -k install``` 명령어를 입력한다.
+- 그리고 ```httpd.exe -k start``` 명령어를 입력한다.
+2. C:/Server/Apache24/conf/htdocs 디렉토리에 해당 box를 넣는다.
+3. 
 *참고 : 코드 색상표
 ```diff
 - text in red
