@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   # ...
 end
 ```
- 버전별로 지원하는 configuration이 다름. 그렇기 때문에, 부득이하게 버전 1과 2의 configuration을 사용해야 한다면 다음과 같이 사용해야 함.
+* 버전별로 지원하는 configuration이 다름. 그렇기 때문에, 부득이하게 버전 1과 2의 configuration을 사용해야 한다면 다음과 같이 사용해야 함.
 ```
 Vagrant.configure("1") do |config|
   # v1 configs...
@@ -20,9 +20,8 @@ Vagrant.configure("2") do |config|
   # v2 configs...
 end
 ```
-Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/docs/vagrantfile/version
+* Vagrant.configure("2")에 관한 자세한 정보 : https://www.vagrantup.com/docs/vagrantfile/version  
 * What is Box? package 포맷의 Vagrant 환경설정을 말한다. 이 박스는 누구든지 어떤 플랫폼에서든 동일한 환경을 생성할 수 있게 만들어준다. 그래서, 주로 해당 VM의 BOX를 package 포맷으로 생성한 뒤 이를 ```vagrant init 박스명``` 과 같이 사용한다.
-***
 # 작업 LIST
 ## 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
 - ```vagrant init bento/centos-7.4``` 명령어로 VM 생성하면, bento/centos-7.4 box가 자동으로 생성됨. (```vagrant box list```를 통해 확인이 가능함)
@@ -78,8 +77,8 @@ end
 **Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다.  
 **Note** : 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면,  
 ```config.vm.disk :disk, size: "50GB", primary: true```만 작성해야한다.  
-**Note** : 디스크 크기를 줄일 수는 없다.
-**Note** : iso 형태의 디스크를 추가할 수 있다.
+**Note** : 디스크 크기를 줄일 수는 없다.  
+**Note** : iso 형태의 디스크를 추가할 수 있다.  
 - 다음의 코드를 Vagrantfile에 추가한다.
 - 이 기능은 현재 실험용 플래그를 사용해야한다. 실험용 플래그는 다음과 같이 설정할 수 있다.
 ```
@@ -158,10 +157,10 @@ Running handlers complete
 Chef Infra Client finished, 567/1530 resources updated in 03 minutes 44 seconds
 gitlab Reconfigured!
 ```
-* gitlab-ctl reconfigure ? 설정이 초기에 제공된 것과 동일한 형태로 설정이 되어있는지 확인 후 초기에 제공된 것과 동일하게 설정함.
+* gitlab-ctl reconfigure ? 설정이 초기에 제공된 것과 동일한 형태로 설정이 되어있는지 확인 후 초기에 제공된 것과 동일하게 설정함. 
 * 여기서 el7 의 의미는? Red Hat 7.x, CentOS 7.x, and CloudLinux 7.x  
 **TODO** 그리고 Gitlab runner란?  
-**NOTE** rpm 파일이 있다면 'rpm -Uvh' 대신 'yum localinstall' 을 실행해 패키지를 설치할 수 있다. 좋은 점은 현재 디렉터리의 rpm 파일에 의존성 문제가 있을 때, 문제를 해결할 수 있는 파일을 인터넷에서 다운로드해서 설치해준다는 점이다. 'rpm -Uvh rpm파일이름.rpm' 대신에 사용하면 된다.
+**NOTE** rpm 파일이 있다면 'rpm -Uvh' 대신 'yum localinstall' 을 실행해 패키지를 설치할 수 있다. 좋은 점은 현재 디렉터리의 rpm 파일에 의존성 문제가 있을 때, 문제를 해결할 수 있는 파일을 인터넷에서 다운로드해서 설치해준다는 점이다. 'rpm -Uvh rpm파일이름.rpm' 대신에 사용하면 된다.  
 (출처: https://linuxstory1.tistory.com/entry/편리하게-패키지를-설치하는-YUM [Linux 세상속으로])
 
 ## 7. VM과 로컬 PC의 디렉토리 공유
