@@ -304,8 +304,9 @@ ErrorLog "logs/error.log"
 - 환경변수를 설정한다. (시스템변수 - path - C:\Apache24\bin)
 - 권리자 권한으로 cmd창을 열고 ```httpd.exe -k install``` 명령어를 입력한다.
 - 그리고 ```httpd.exe -k start``` 명령어를 입력한다.
-2. C:/Server/Apache24/conf/htdocs 디렉토리에 해당 box를 넣는다.
-3. 
+2. C:/Server/Apache24/conf/htdocs/box 디렉토리에 해당 box를 넣는다.
+3. cmd에서 ```vagrant up``` 명령어 입력 후 ```vagrant ssh```로 쉘에 접속한 뒤 ```wget http://[Host IP 입력]:[port Number 입력]/box/mynew.box -O tempbox.box```로 해당 박스를 다운로드 받는다.
+
 *참고 : 코드 색상표
 ```diff
 - text in red
