@@ -73,7 +73,7 @@ end
 (주의사항 : Provision의 경우엔 --provision flag 를 사용해 줘야 reload가 됨)
 
 ### 3.2. DISK (중요)
-- 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.  
+* 방법1) 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.  
 **Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다.  
 **Note** : 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면,  
 ```config.vm.disk :disk, size: "50GB", primary: true```만 작성해야한다.  
@@ -111,6 +111,21 @@ end
 ```
 * 참고 : https://www.vagrantup.com/docs/disks/configuration
 
+* 방법2) plugin을 사용한다.
+1. 다음의 명령어로 플러그인을 설치한다.
+```
+# vagrant plugin install vagrant-disksize
+Installing the 'vagrant-disksize' plugin. This can take a few minutes...
+Fetching vagrant-disksize-0.1.3.gem
+Installed the plugin 'vagrant-disksize (0.1.3)'!
+```
+2. Vagrantfile에 다음과 같은 내용을 입력한다.
+```
+Vagrant.configure('2') do |config|
+  config.vm.box = 'ubuntu/xenial64'
+  config.disksize.size = '50GB'
+end
+```
 ## 4. 포트 포워딩
 - 포트를 포워딩하여 Host(local PC) port와 Guest(VM) Port를 포워딩할 수 있다. 설정 후엔 `vagrant reload`를 한다.
 ```
