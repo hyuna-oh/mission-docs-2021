@@ -286,10 +286,7 @@ vagrant init mynewbox
 - add box 명령어 참고 : https://www.vagrantup.com/docs/cli/box#box-add
 - add box 전에 box를 경량화 하고자 한다면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
 ## 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
-```diff
-! TODO
-```
-1. localhost에 웹 서버를 설치
+1. Host(localhost)에 웹 서버를 설치
 - Windows 10 에서 웹 서버 구축하기
 - http://apachelounge.com/download/에 들어가서 64비트로 설치
 - C:/Server/Apache24/conf/httpd.conf 를 수정한다.
