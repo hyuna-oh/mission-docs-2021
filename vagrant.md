@@ -302,7 +302,8 @@ ErrorLog "logs/error.log"
 - 권리자 권한으로 cmd창을 열고 ```httpd.exe -k install``` 명령어를 입력한다.
 - 그리고 ```httpd.exe -k start``` 명령어를 입력한다.
 2. C:/Server/Apache24/conf/htdocs/box 디렉토리에 해당 box를 넣는다.
-3. cmd에서 ```vagrant up``` 명령어 입력 후 ```vagrant ssh```로 쉘에 접속한 뒤 ```wget http://[Host IP 입력]:[port Number 입력]/box/mynew.box -O tempbox.box```로 해당 박스를 다운로드 받는다.
+3. cmd에서 ```vagrant box add mynew http://[Host IP 입력]:[port Number 입력]/box/mynew.box``` 명령어로 박스를 다운받는다.
+**NOTE** : 만약 centos에 있는 웹 서버에 올려놓은 BOX를 다운받는다면, nginx 서버를 설치한 뒤 /etc/share/nginx 폴더에 해당 파일을 올린 뒤 3번의 내용을 진행하면 된다.
 
 *참고 : 코드 색상표
 ```diff
