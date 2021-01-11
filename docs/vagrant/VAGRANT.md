@@ -180,6 +180,7 @@ gitlab Reconfigured!
 (출처: https://linuxstory1.tistory.com/entry/편리하게-패키지를-설치하는-YUM [Linux 세상속으로])
 
 ## 7. VM과 로컬 PC의 디렉토리 공유
+- 당연한 얘기겠지만, 해당 디렉토리가 이미 생성되어 있어야 함 
 ```
 Vagrant.configure("2") do |config|
   # other config here
