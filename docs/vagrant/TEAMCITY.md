@@ -80,7 +80,7 @@ postgres=# create database teamcity;
 # sh catalina.sh
 ```
 ### TeamCity Server 설정
-- TeamCity의 기본 포트는 8111 이므로, local 브라우저에서 [VM IP]:8111로 접속
+- TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
 - 
 
 ### TeamCity Agent 설치
