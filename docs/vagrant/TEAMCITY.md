@@ -63,6 +63,7 @@ host    all             all             ::1/128                 md5
 #host    replication     postgres        127.0.0.1/32            ident 
 #host    replication     postgres        ::1/128                 ident 
 ```
+- 설치가 완료 되면 postgres 구동
 ```
 # postgresql 구동
 systemctl start postgresql
@@ -79,6 +80,8 @@ postgres=# create database teamcity;
 # sh catalina.sh
 ```
 ### TeamCity Server 설정
+- TeamCity의 기본 포트는 8111 이므로, local 브라우저에서 [VM IP]:8111로 접속
+- 
 
 ### TeamCity Agent 설치
 
