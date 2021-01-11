@@ -154,8 +154,10 @@ vagrant ssh -- -L 80:localhost:8080
 ## 6. GITLAB 설치
 - install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.
 - install_gitlab.sh
+**주의** 웬만하면 wget을 제외한 나머지 문장은 ```vagrant ssh```에서 하는 게 안전함. 권한 등 기타 문제가 발생할 때 해결하기가 쉽지 않음.
 ```
 echo ==== Installing GitLab CE =================================================
+sudo yum install wget
 wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-13.4.7-ce.0.el7.x86_64.rpm/download.rpm
 yum install -y epel-release
 yum install -y curl policycoreutils-python openssh-server postfix
