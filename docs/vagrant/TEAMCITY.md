@@ -33,8 +33,54 @@ gitlab Reconfigured!
 ```
 
 ## Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
-* TeamCity Server
-* TeamCity Agent
+* TeamCity Server 설치
+    * ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
+ ```
+ # 팀시티 서버 설치
+ wget https://download.jetbrains.com/teamcity/TeamCity-2020.2.1.tar.gz
+ # postgresql 도 필요하기 때문에 설치
+ yum install postgresql postgresql-server
+ # OS 부팅시 postgres 자동 실행
+ systemctl enable postgresql
+ # postgres 시작 전 데이터베이스 초기화
+ systemctl enable postgresql
+ # Postgres 설정 파일인 /var/lib/pgsql/data/pg_hba.conf 파일을 vi로 오픈하여 local connection에 대해서 METHOD를 md5로 수정
+ vi /var/lib/pgsql/data/pg_hba.conf
+ ```
+    * pg_hba.conf file 
+ ```
+ # TYPE  DATABASE        USER            ADDRESS                 METHOD 
+                                                                       
+# "local" is for Unix domain socket connections only                   
+local   all             all                                     peer   
+# IPv4 local connections:                                              
+host    all             all             127.0.0.1/32            md5    
+# IPv6 local connections:                                              
+host    all             all             ::1/128                 md5    
+# Allow replication connections from localhost, by a user with the     
+# replication privilege.                                               
+#local   replication     postgres                                peer  
+#host    replication     postgres        127.0.0.1/32            ident 
+#host    replication     postgres        ::1/128                 ident 
+```
+```
+# postgresql 구동
+systemctl start postgresql
+# postgres 계정 비밀번호 수정
+su - postgres -c 'psql'
+# 데이터베이스 생성
+postgres=# alter user postgres password 'postgres';
+postgres=# create database teamcity;
+```
+    * postgres 설치 완료 시 다음의 절차대로 설치
+```
+# tar xvfz TeamCity-2020.2.1.tar.gz
+# cd TeamCity/bin
+# sh catalina.sh
+```
+
+ 
+* TeamCity Agent 설치
 
 ## Gitlab에 프로젝트 생성
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
