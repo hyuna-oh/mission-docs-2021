@@ -1,10 +1,10 @@
-# vagrant (2021.01.04 ~ 2021.01.10)
+# VAGRANT (2021.01.04 ~ 2021.01.10)
 * 베이그런트는 가상화 소프트웨어 (버추얼박스, 도커 컨테이너, AWS 등)의 생성 및 유지보수를 위한 오픈소스 소프트웨어 제품
 * 루비 언어로 작성됨
 * Provision : 게스트 머신을 반복적으로 생성하고 사용하기 위해 프로비져닝으로 만들어서 사용
 * Vagrant.configure("2") 의 의미
-  + 여기서, configure("2")는 버전을 의미함.
-  + 최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
+  * 여기서, configure("2")는 버전을 의미함.
+  * 최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
 ```
 Vagrant.configure("2") do |config|
   # ...
@@ -24,8 +24,8 @@ end
 * What is Box? package 포맷의 Vagrant 환경설정을 말한다. 이 박스는 누구든지 어떤 플랫폼에서든 동일한 환경을 생성할 수 있게 만들어준다. 그래서, 주로 해당 VM의 BOX를 package 포맷으로 생성한 뒤 이를 ```vagrant init 박스명``` 과 같이 사용한다.
 # 작업 LIST
 ## 1. Box로 VM 생성하기 (CentOS, Ubuntu 등)
-- ```vagrant init bento/centos-7.4``` 명령어로 VM 생성하면, bento/centos-7.4 box가 자동으로 생성됨. (```vagrant box list```를 통해 확인이 가능함)
-- 또한 다음의 Vagrantfile이 생성됨.
+* ```vagrant init bento/centos-7.4``` 명령어로 VM 생성하면, bento/centos-7.4 box가 자동으로 생성됨. (```vagrant box list```를 통해 확인이 가능함)
+* 또한 다음의 Vagrantfile이 생성됨.
 ```
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/centos-7.4"
@@ -74,11 +74,11 @@ end
 
 ### 3.2. DISK (중요)
 * 방법1) 메인 디스크 크기를 변경하려면 다음의 config를 Vagrantfile에 넣어주면 된다.  
-**Note** : ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다.  
-**Note** : 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면,  
+**Note** ```the primary: true``` 라는 옵션은 vm의 메인 드라이브 크기를 확장하여준다. 만약 이 옵션이 없다면, Vagrant는 새로운 디스크를 vm 드라이브에 첨부하여 줄 것이다.  
+**Note** 여기서, h.vm.box에 이름은 vm 명칭을 뜻하는데, 이름을 다르게 하여 만들면 새로운 BOX가 생성된다. 때문에 default로 하려면,  
 ```config.vm.disk :disk, size: "50GB", primary: true```만 작성해야한다.  
-**Note** : 디스크 크기를 줄일 수는 없다.  
-**Note** : iso 형태의 디스크를 추가할 수 있다.  
+**Note** 디스크 크기를 줄일 수는 없다.  
+**Note** iso 형태의 디스크를 추가할 수 있다.  
 - 다음의 코드를 Vagrantfile에 추가한다.
 - 이 기능은 현재 실험용 플래그를 사용해야한다. 실험용 플래그는 다음과 같이 설정할 수 있다.
 ```
@@ -200,8 +200,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 * filezila로 접속 시
-  + 호스트 : sftp://192.168.xx.yy
-  + 사용자명/비밀번호 입력
+  * 호스트 : sftp://192.168.xx.yy
+  * 사용자명/비밀번호 입력
 * 참고 : https://www.vagrantup.com/docs/networking/private_network
 ### 8.2. DHCP 설정
 * private ip를 DHCP 방식으로 구성할 경우
@@ -228,7 +228,7 @@ enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 ## 9. Plugin 설치 및 사용
-- Plugin 설치
+* Plugin 설치
 ```
 C:\...\hyunaoh>vagrant plugin install vagrant-global-status
 Installing the 'vagrant-global-status' plugin. This can take a few minutes...
@@ -237,7 +237,7 @@ Fetching vagrant-global-status-0.1.4.gem
 Successfully uninstalled vagrant-vbguest-0.29.0
 Installed the plugin 'vagrant-global-status (0.1.4)'!
 ```
-- Plugin 사용 
+* Plugin 사용 
 ```
 C:\...\hyunaoh>vagrant global-status --timestamp
 
@@ -245,12 +245,12 @@ C:/.../hyunaoh
   default      running      (virtualbox)   2021-01-07 09:46:01 +0900
 
 ```
-- Plugin 삭제
+* Plugin 삭제
 ```
 # Removing a plugin from a known gem source
 $ vagrant plugin uninstall my-plugin
 ```
-- Plugin 업데이트
+* Plugin 업데이트
 ```
 C:\...\hyunaoh>vagrant plugin update vagrant-global-status
 Updating plugins: vagrant-global-status. This may take a few minutes...
@@ -258,7 +258,7 @@ Fetching vagrant-vbguest-0.29.0.gem
 Successfully uninstalled vagrant-vbguest-0.28.0
 Updated 'vagrant-vbguest' to version '0.29.0'!
 ```
-- Plugin 리스트
+* Plugin 리스트
 ```
 C:\...\hyunaoh>vagrant plugin list
 vagrant-disksize (0.1.3, global)
@@ -266,7 +266,7 @@ vagrant-global-status (0.1.4, global)
 vagrant-vbguest (0.28.0, global)
 ```
 
-**Note** : 향후에는 ```vagrant plugin``` 명령어가 각 플러그인을 설치할 때 서브명령어에 포함될 예정이다.
+**Note** 향후에는 ```vagrant plugin``` 명령어가 각 플러그인을 설치할 때 서브명령어에 포함될 예정이다.
 
 ## 10. 기존 Box로 자체 신규 Box 만들기
 1. vagrant 로 기존의 BOX를 pacakge화 하여 저장한다.
@@ -283,13 +283,13 @@ vagrant destroy
 rm Vagrantfile
 vagrant init mynewbox
 ```
-- add box 명령어 참고 : https://www.vagrantup.com/docs/cli/box#box-add
-- add box 전에 box를 경량화 하고자 한다면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
+* add box 명령어 참고 : https://www.vagrantup.com/docs/cli/box#box-add
+* add box 전에 box를 경량화 하고자 한다면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
 ## 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
 1. Host(localhost)에 웹 서버를 설치
-- Windows 10 에서 웹 서버 구축하기
-- http://apachelounge.com/download/에 들어가서 64비트로 설치
-- C:/Server/Apache24/conf/httpd.conf 를 수정한다.
+* Windows 10 에서 웹 서버 구축하기
+* http://apachelounge.com/download/에 들어가서 64비트로 설치
+* C:/Server/Apache24/conf/httpd.conf 를 수정한다.
 ```
 ServerRoot "c:/Server/Apache24"
 Listen 80
@@ -298,14 +298,14 @@ ServerName 127.0.0.1:80
 DocumentRoot "c:/Server/Apache24/htdocs"
 ErrorLog "logs/error.log" 
 ```
-- 환경변수를 설정한다. (시스템변수 - path - C:\Apache24\bin)
-- 권리자 권한으로 cmd창을 열고 ```httpd.exe -k install``` 명령어를 입력한다.
-- 그리고 ```httpd.exe -k start``` 명령어를 입력한다.
+* 환경변수를 설정한다. (시스템변수 - path - C:\Apache24\bin)
+* 권리자 권한으로 cmd창을 열고 ```httpd.exe -k install``` 명령어를 입력한다.
+* 그리고 ```httpd.exe -k start``` 명령어를 입력한다.
 2. C:/Server/Apache24/conf/htdocs/box 디렉토리에 해당 box를 넣는다.
 3. cmd에서 ```vagrant box add mynew http://[Host IP 입력]:[port Number 입력]/box/mynew.box``` 명령어로 박스를 다운받는다.  
-**NOTE** : 만약 centos에 있는 웹 서버에 올려놓은 BOX를 다운받는다면, nginx 서버를 설치한 뒤 /etc/share/nginx 폴더에 해당 파일을 올린 뒤 3번의 내용을 진행하면 된다.
+**NOTE** 만약 centos에 있는 웹 서버에 올려놓은 BOX를 다운받는다면, nginx 서버를 설치한 뒤 /etc/share/nginx 폴더에 해당 파일을 올린 뒤 3번의 내용을 진행하면 된다.
 
-*참고 : 코드 색상표
+**참고** 코드 색상표
 ```diff
 - text in red
 + text in green
