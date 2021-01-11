@@ -33,8 +33,8 @@ gitlab Reconfigured!
 ```
 
 ## Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
-* TeamCity Server 설치
-    * ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
+- TeamCity Server 설치
+    - ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
     
  ```
  # 팀시티 서버 설치
@@ -48,7 +48,7 @@ gitlab Reconfigured!
  # Postgres 설정 파일인 /var/lib/pgsql/data/pg_hba.conf 파일을 vi로 오픈하여 local connection에 대해서 METHOD를 md5로 수정
  vi /var/lib/pgsql/data/pg_hba.conf
  ```
-    * pg_hba.conf file 
+- pg_hba.conf file 
  ```
  # TYPE  DATABASE        USER            ADDRESS                 METHOD 
                                                                        
@@ -74,15 +74,15 @@ su - postgres -c 'psql'
 postgres=# alter user postgres password 'postgres';
 postgres=# create database teamcity;
 ```
-    * postgres 설치 완료 시 다음의 절차대로 설치
+    - postgres 설치 완료 시 다음의 절차대로 설치
 ```
 # tar xvfz TeamCity-2020.2.1.tar.gz
 # cd TeamCity/bin
 # sh catalina.sh
 ```
+- TeamCity Server 설정
 
- 
-* TeamCity Agent 설치
+- TeamCity Agent 설치
 
 ## Gitlab에 프로젝트 생성
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
