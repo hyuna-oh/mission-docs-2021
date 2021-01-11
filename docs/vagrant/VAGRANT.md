@@ -64,10 +64,10 @@ end
 ```
 ```
 config.vm.provider "virtualbox" do |v|
-  v.gui = true 
   # 부팅되면서 gui 환경으로 부팅
-  v.name = "my_vm"
+  v.gui = true 
   # VirtualBox GUI에서의 name을 세팅할 수 있음
+  v.name = "my_vm"
 end 
 ```
 - 방법2) ```vagrant reload``` 명령어를 통해서도 Vagrantfile 수정 후 서버를 다시 올릴 수 있다.
