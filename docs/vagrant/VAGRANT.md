@@ -33,6 +33,12 @@ Vagrant.configure("2") do |config|
 end
 ```
 (여기서 Vagrantfile 파일은 VM을 구동하기 위한 메타데이터 정보를 가지고 있음)
+- 이후 ```vagrant ssh```로 들어간 뒤 다음의 패키지들을 설치
+```
+sudo yum install wget
+sudo yum install -y epel-release    
+sudo yum update
+```
 
 ## 2. VM 삭제
 - VM 삭제 명령어 : ```vagrant destroy VM명/ID``` 명령어를 통해 삭제할 수 있다.  
@@ -314,4 +320,14 @@ ErrorLog "logs/error.log"
 ! text in orange
 # text in gray
 ```
+
+**참고** vagrant로 처음 리눅스 설치 후 나오는 에러메시지에 따른 패키지 설치
+- ERROR : Could not find the X.Org or XFree86 Window System, skipping. modprobe vboxguest failed
+```sudo yum -y install xorg-x11-drivers xorg-x11-utils```
+- ERROR : modprobe vboxguest failed
+```
+sudo yum install dkms binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers 
+sudo yum install kernel-devel
+```
+
 - vagrant 관련 설명이 잘 되어 있는 article : https://tech.osteel.me/posts/how-to-use-vagrant-for-local-web-development#port-forwarding
