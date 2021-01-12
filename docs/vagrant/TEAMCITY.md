@@ -1,6 +1,7 @@
 # TeamCity 
 - 2021.01.11 ~ 2021.01.17 동안 작업한 내용
 - TeamCity는 JetBrains의 빌드 관리 및 지속적 통합 서버
+- 깃랩은 깃랩 사가 개발한 깃 저장소 및 CI/CD, 이슈 추적, 보안성 테스트 등의 기능을 갖춘 웹 기반의 데브옵스 플랫폼
 
 ## Vagrant + CentOS 7에서 Gitlab 설치
 1. ```vagrant init bento/centos-7``` 으로 새로운 CentOS 7 프로젝트 생성 (https://app.vagrantup.com/boxes/search 참고)
