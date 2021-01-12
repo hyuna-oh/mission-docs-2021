@@ -38,6 +38,7 @@ gitlab Reconfigured!
 
 ## Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
 ### TeamCity Server 설치
+- java를 먼저 설치한 후 진행 (Java 8)
 - ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
  ```
  # 팀시티 서버 설치
