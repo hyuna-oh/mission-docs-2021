@@ -6,7 +6,7 @@
 2. 생성 후 Gitlab 설치
 - install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.
 - 나머지는 gitlab 설치 페이지를 보고 설치하면 됨.
-- install_gitlab.sh
+- install_gitlab.sh  
 **주의** wget 을 제외한 모든 줄은 ```vagrant ssh``` 쉘에서 진행하는 게 좋음. 그래야 문제가 생겨도 해결하기가 수월함.
 ```
 echo ==== Installing GitLab CE =================================================
