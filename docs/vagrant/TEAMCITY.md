@@ -1,5 +1,6 @@
 # TeamCity 
 - 2021.01.11 ~ 2021.01.17 동안 작업한 내용
+- TeamCity는 JetBrains의 빌드 관리 및 지속적 통합 서버
 
 ## Vagrant + CentOS 7에서 Gitlab 설치
 1. ```vagrant init bento/centos-7``` 으로 새로운 CentOS 7 프로젝트 생성 (https://app.vagrantup.com/boxes/search 참고)
@@ -84,12 +85,57 @@ postgres=# create database teamcity;
 # sh catalina.sh
 ```
 ### TeamCity Server 설정
-- TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
-- 
+1. TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
+2. database type : postgresql / database host : localhost / name : teamcity / username : postgres / passwd : postgres 로 설정
+3. admin 계정 생성
 
 ### TeamCity Agent 설치
-- 
+- TeamCity는 빌드를 전담하는 Agent가 필요. 이 Agent는 TeamCity가 설치되어 있는 서버에 설치를 해도 되고, 다른 서버에 설치를 해도 됨. 
+- TeamCity Build Agent는 소스코드를 다운로드하고 빌드를 수행하기 때문에 Disk 소비가 많으므로 디스크 공간이 충분한 파티션을 선택
+1. "메뉴 > Agents > Install Build Agents"를 클릭
+2. Full zip file distribution의 link를 복사
+3. Build Agent를 설치
+```
+# mkdir <BUILD_AGENT_HOME>
+# cd <BUILD_AGENT_HOME>
+# wget http://<TEAMCITY_SERVER_IP>:8111/update/buildAgentFull.zip
+# unzip buildAgentFull.zip
+# ls
+bin  BUILD_85633  buildAgentFull.zip  conf  contrib  launcher  lib  plugins  service.properties  system
+```
+4. Build Agent가 TeamCity Server와 통신할 수 있도록 환경설정 파일을 수정
+```
+# cp <BUILD_AGENT_HOME>/conf/buildAgent.dist.properties <BUILD_AGENT_HOME>/conf/buildAgent.properties
+# vi <BUILD_AGENT_HOME>/conf/buildAgent.properties
+## TeamCity build agent configuration file
 
+######################################
+#   Required Agent Properties        #
+######################################
+
+## The address of the TeamCity server. The same as is used to open TeamCity web interface in the browser.
+## Example:  serverUrl=https://buildserver.mydomain.com:8111
+serverUrl=http://localhost:8111/
+
+## The unique name of the agent used to identify this agent on the TeamCity server
+## Use blank name to let server generate it.
+## By default, this name would be created from the build agent's host name
+name=TeamCity Build Agent
+... 생략
+```
+5. 커맨드 실행
+```
+# cd <BUILD_AGENT_HOME>/bin
+# ./agent.sh start
+Starting TeamCity build agent...
+Java executable is found: '/usr/lib/jvm/jre/bin/java'
+Starting TeamCity Build Agent Launcher...
+Agent home directory is /root/build-agent
+Agent Launcher Java runtime version is 1.8
+Lock file: /root/build-agent/logs/buildAgent.properties.lock
+Using no lock
+Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
+```
 ## Gitlab에 프로젝트 생성
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
