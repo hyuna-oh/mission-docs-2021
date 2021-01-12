@@ -1,6 +1,6 @@
 # TeamCity 
 - 2021.01.11 ~ 2021.01.17 동안 작업한 내용
-- TeamCity는 JetBrains의 빌드 관리 및 지속적 통합 서버
+- TeamCity는 JetBrains의 빌드 관리 및 지속적 통합 서버를 위한 
 - 깃랩은 깃랩 사가 개발한 깃 저장소 및 CI/CD, 이슈 추적, 보안성 테스트 등의 기능을 갖춘 웹 기반의 데브옵스 플랫폼
 
 ## Vagrant + CentOS 7에서 Gitlab 설치
@@ -143,5 +143,9 @@ Using no lock
 Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ```
 ## Gitlab에 프로젝트 생성
+```
+!TODO
+```
+- SSH KEY 추가해보기!
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
