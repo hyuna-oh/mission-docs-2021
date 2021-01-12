@@ -66,7 +66,8 @@ host    all             all             ::1/128                 md5
 #host    replication     postgres        127.0.0.1/32            ident 
 #host    replication     postgres        ::1/128                 ident 
 ```
-- 설치가 완료 되면 postgres 구동
+- 설치가 완료 되면 postgres 구동  
+(만약 ```su - postgres -c 'psql'``` 명령어를 입력했을 때 Authentication failure 에러가 난다면, ```sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"``` 명령어로 변경해 줌)
 ```
 # postgresql 구동
 systemctl start postgresql
