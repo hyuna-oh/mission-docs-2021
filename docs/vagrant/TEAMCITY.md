@@ -6,7 +6,8 @@
 ## Vagrant + CentOS 7에서 Gitlab 설치
 1. ```vagrant init bento/centos-7``` 으로 새로운 CentOS 7 프로젝트 생성 (https://app.vagrantup.com/boxes/search 참고)
 2. 생성 후 Gitlab 설치
-- install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.
+- install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.  
+  (provision 적용이 안되는 경우가 있는데, 이럴 땐 그냥 ```vagrant halt```와 ```vagrant up``` 명령어로 재시작을 하면 적용된다.)
 - 나머지는 gitlab 설치 페이지를 보고 설치하면 됨.
 - install_gitlab.sh  
 **주의** wget 을 제외한 모든 줄은 ```vagrant ssh``` 쉘에서 진행하는 게 좋음. 그래야 문제가 생겨도 해결하기가 수월함.
@@ -74,7 +75,7 @@ host    all             all             ::1/128                 md5
 #host    replication     postgres        ::1/128                 ident 
 ```
 3. 설치가 완료 되면 postgres 구동  
-(만약 ```su - postgres -c 'psql'``` 명령어를 입력했을 때 Authentication failure 에러가 난다면, ```sudo su - postgres -c 'psql'``` 명령어로 변경해 줌)
+(만약 ```su - postgres -c 'psql'``` 명령어를 입력했을 때 Authentication failure 에러가 난다면, ```sudo su - postgres -c 'psql'``` 명령어로 변경해 주거나 root로 접속하여 해당 명령어 수행)
 ```
 # postgresql 구동
 systemctl start postgresql
@@ -84,7 +85,7 @@ su - postgres -c 'psql'
 postgres=# alter user postgres password 'postgres';
 postgres=# create database teamcity;
 ```
-4. postgres 설치 완료 시 다음의 절차대로 TeamCity 설치
+4. postgres 설치 완료 시 다음의 순서대로 TeamCity 설치
 ```
 # tar xvfz TeamCity-2020.2.1.tar.gz
 # cd TeamCity/bin
@@ -132,6 +133,7 @@ serverUrl=http://localhost:8111/
 name=TeamCity Build Agent
 ... 생략
 ```
+- 자세한 사항은 wiki의 TeamCity Agent 설치 항목을 참조
 5. 커맨드 실행
 ```
 # cd <BUILD_AGENT_HOME>/bin
@@ -158,4 +160,4 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 - ```https://spring.io/guides/tutorials/rest/``` 참고
 
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
-- ```!TODO``` 프로젝트 2개이상 추가하고 
+- ```!TODO``` 프로젝트 2개이상 추가해보기
