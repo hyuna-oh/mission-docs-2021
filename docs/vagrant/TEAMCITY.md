@@ -39,12 +39,12 @@ gitlab Reconfigured!
 
 ## Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
 ### TeamCity Server 설치
-- java를 먼저 설치한 후 진행 (Java 8)
+1. java를 먼저 설치한 후 진행 (Java 8)
 ```
 sudo yum install -y java-1.8.0-openjdk-devel.x86_64
 sudo /usr/sbin/alternatives --config java
 ```
-- ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
+2. ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
  ```
  # 팀시티 서버 설치
  wget https://download.jetbrains.com/teamcity/TeamCity-2020.2.1.tar.gz
@@ -73,8 +73,8 @@ host    all             all             ::1/128                 md5
 #host    replication     postgres        127.0.0.1/32            ident 
 #host    replication     postgres        ::1/128                 ident 
 ```
-- 설치가 완료 되면 postgres 구동  
-(만약 ```su - postgres -c 'psql'``` 명령어를 입력했을 때 Authentication failure 에러가 난다면, ```sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"``` 명령어로 변경해 줌)
+3. 설치가 완료 되면 postgres 구동  
+(만약 ```su - postgres -c 'psql'``` 명령어를 입력했을 때 Authentication failure 에러가 난다면, ```sudo su - postgres -c 'psql'``` 명령어로 변경해 줌)
 ```
 # postgresql 구동
 systemctl start postgresql
@@ -84,12 +84,15 @@ su - postgres -c 'psql'
 postgres=# alter user postgres password 'postgres';
 postgres=# create database teamcity;
 ```
-- postgres 설치 완료 시 다음의 절차대로 설치
+4. postgres 설치 완료 시 다음의 절차대로 teamCity 설치
 ```
 # tar xvfz TeamCity-2020.2.1.tar.gz
 # cd TeamCity/bin
 # sh catalina.sh
 ```
+5. 
+- ```sudo <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행
+
 ### TeamCity Server 설정
 1. TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
 2. database type : postgresql / database host : localhost / name : teamcity / username : postgres / passwd : postgres 로 설정
