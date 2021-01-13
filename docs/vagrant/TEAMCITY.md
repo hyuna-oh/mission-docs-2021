@@ -151,5 +151,8 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 !TODO
 ```
 - SSH KEY 추가해보기!
+```
+!TODO https://stackoverflow.com/questions/31813080/windows-10-ssh-keys : 참고
+```
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
