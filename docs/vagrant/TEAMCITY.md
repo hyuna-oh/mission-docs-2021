@@ -84,14 +84,15 @@ su - postgres -c 'psql'
 postgres=# alter user postgres password 'postgres';
 postgres=# create database teamcity;
 ```
-4. postgres 설치 완료 시 다음의 절차대로 teamCity 설치
+4. postgres 설치 완료 시 다음의 절차대로 TeamCity 설치
 ```
 # tar xvfz TeamCity-2020.2.1.tar.gz
 # cd TeamCity/bin
 # sh catalina.sh
 ```
-5. 
-- ```sudo <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행
+5. TeamCity 실행
+- ```sudo <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
+(만약 TeamCity 실행 실패시 해당 log 참조)
 
 ### TeamCity Server 설정
 1. TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
