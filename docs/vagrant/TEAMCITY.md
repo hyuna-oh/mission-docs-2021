@@ -91,9 +91,8 @@ postgres=# create database teamcity;
 # sh catalina.sh
 ```
 5. TeamCity 실행
-- ```sudo <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
+- ```sudo sh <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
 (만약 TeamCity 실행 실패시 해당 log 참조)
-
 ### TeamCity Server 설정
 1. TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
 2. database type : postgresql / database host : localhost / name : teamcity / username : postgres / passwd : postgres 로 설정
