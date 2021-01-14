@@ -40,10 +40,26 @@ gitlab Reconfigured!
 
 ## Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
 ### TeamCity Server 설치
-1. java를 먼저 설치한 후 진행 (Java 8)
+1. java를 먼저 설치한 후 진행
 ```
-sudo yum install -y java-1.8.0-openjdk-devel.x86_64
-sudo /usr/sbin/alternatives --config java
+# 설치 된 자바버전을 확인 후
+rpm -qa | grep jdk  
+# 자바 버전 삭제
+yum remove [해당 자바 버전]  
+# 설치할 수 있는 자바 버전을 확인 후
+# (여기서, java-버전-openjdk 패키지가 JRE, java-버전-openjdk-devel 패키지가 JDK라고 생각하면 된다.)
+yum list java*jdk
+yum list java*jdk-devel
+# 해당 자바 버전을 설치
+sudo yum install -y [원하는 java*jdk 버전]
+sudo yum install -y [원하는 java*jdk-devel 버전]
+# 설치 확인
+rpm -qa java*jdk-devel
+javac -version
+# 환경변수 설정 (vi /etc/profile 제일 아래 추가)
+   export JAVA_HOME=/usr/local/jdk버전
+   export PATH=$PATH:$JAVA_HOME/bin
+   export CLASSPATH=.:$JAVA_HOME/lib/tools.jar
 ```
 2. ```vagrant ssh```로 쉘에 접속하여 다음의 코맨드들을 입력
  ```
@@ -113,10 +129,8 @@ postgres=# create database teamcity;
 ```
 ※ 버전의 충돌일 수도 있음
 - TeamCity 버전이 2019.2.1 이상부터는 JDK 8u242+ 이하의 버전을 사용할 때 ```java.lang.NoClassDefFoundError: Could not initialize class XXX errors, ```와 같은 에러가 발생할 수 있음.
+- 현재 2020.2.1 버전이므로 jdk 최신버전으로 돌려보기
 
-
-
-Until TeamCity 2019.2.2 is released, it is recommended to use Java 8u232 version for TeamCity server.
 5. TeamCity 실행
 - ```sudo sh <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
 (만약 TeamCity 실행 실패시 해당 log 참조)
