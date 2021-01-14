@@ -107,7 +107,7 @@ postgres=# create database teamcity;
 # cd TeamCity/bin
 # sh catalina.sh
 ```
-※ HOST 브라우저에서 http://[해당 IP]:8111 접속이 안 될 경우, 다음의 커맨드들을 실행 (참고로 오래걸림) 후 GUEST VM의 GUI로 해당 포트 접속
+※ HOST 브라우저에서 http://[해당 IP]:8111 접속이 안 될 경우, 다음의 커맨드들을 실행 후 GUEST VM의 GUI로 해당 포트 접속 (참고로 오래걸림)
 ```
 # sudo yum update
 ## group list를 확인한 후
@@ -130,7 +130,7 @@ postgres=# create database teamcity;
 ```
 - ```https://serverfault.com/questions/585528/set-gitlab-external-web-port-number``` 를 참고하여 gitlab의 nginx 포트를 변경해줘도 됨.
 
-※ 버전의 충돌일 수도 있음
+※ JDK 버전 충돌일 수 있음
 - TeamCity 버전이 2019.2.1 이상부터는 JDK 8u242+ 이하의 버전을 사용할 때 ```java.lang.NoClassDefFoundError: Could not initialize class XXX errors, ```와 같은 에러가 발생할 수 있음.
 - 현재 2020.2.1 버전이므로 jdk 최신버전으로 돌려보기  
 
