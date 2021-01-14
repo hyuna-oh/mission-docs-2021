@@ -134,6 +134,7 @@ postgres=# create database teamcity;
 - TeamCity 버전이 2019.2.1 이상부터는 JDK 8u242+ 이하의 버전을 사용할 때 ```java.lang.NoClassDefFoundError: Could not initialize class XXX errors, ```와 같은 에러가 발생할 수 있음.
 - 현재 2020.2.1 버전이므로 jdk 최신버전으로 돌려보기  
 
+* 결국 재설치하니까 됨..ㅠㅠ
 5. TeamCity 실행
 - ```sudo sh <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
 (만약 TeamCity 실행 실패시 해당 log 참조)
