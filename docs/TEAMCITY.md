@@ -120,6 +120,7 @@ postgres=# create database teamcity;
 # sudo reboot
 ```
 ※ 만약 위의 방법으로도 접속이 안된다면 80 포트가 이미 사용중이라서 그럴 수 있음  
+- gitlab에 설치된 nginx 포트가 80이라 생기는 문제일수도 있음.
 그럴 땐 ```TeamCity/conf/server.xml``` 과 ```TeamCity\buildAgent\conf\buildAgent.properties```에서 80포트를 81포트로 바꿔 줌 
 ```
 <Connector port="80" protocol="HTTP/1.1"
@@ -129,7 +130,7 @@ postgres=# create database teamcity;
 ```
 ※ 버전의 충돌일 수도 있음
 - TeamCity 버전이 2019.2.1 이상부터는 JDK 8u242+ 이하의 버전을 사용할 때 ```java.lang.NoClassDefFoundError: Could not initialize class XXX errors, ```와 같은 에러가 발생할 수 있음.
-- 현재 2020.2.1 버전이므로 jdk 최신버전으로 돌려보기
+- 현재 2020.2.1 버전이므로 jdk 최신버전으로 돌려보기  
 
 5. TeamCity 실행
 - ```sudo sh <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
