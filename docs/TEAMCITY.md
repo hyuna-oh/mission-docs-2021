@@ -91,6 +91,27 @@ postgres=# create database teamcity;
 # cd TeamCity/bin
 # sh catalina.sh
 ```
+※ HOST 브라우저에서 http://[해당 IP]:8111 접속이 안 될 경우, 다음의 커맨드들을 실행 (참고로 오래걸림) 후 GUEST VM의 GUI로 해당 포트 접속
+```
+# sudo yum update
+## group list를 확인한 후
+# yum group list
+## 해당 group들을 설치
+# sudo yum groupinstall "GNOME Desktop" "Graphical Administration Tools"
+## 설치한 파일들의 run level을 변경한 후
+# sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+## 재시작
+# sudo reboot
+```
+※ 만약 위의 방법으로도 접속이 안된다면 80 포트가 이미 사용중이라서 그럴 수 있음  
+그럴 땐 ```TeamCity/conf/server.xml``` 과 ```TeamCity\buildAgent\conf\buildAgent.properties```에서 80포트를 81포트로 바꿔 줌 
+```
+<Connector port="80" protocol="HTTP/1.1"
+           connectionTimeout="60000"
+           redirectPort="8543"
+           useBodyEncodingForURI="true" />
+```
+
 5. TeamCity 실행
 - ```sudo sh <TeamCity Dir>/bin/runAll.sh start``` 명령어로 실행  
 (만약 TeamCity 실행 실패시 해당 log 참조)
