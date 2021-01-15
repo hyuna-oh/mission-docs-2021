@@ -225,6 +225,7 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
   ㄴmybatis
     ㄴmapper.xml
   ㄴapplication.properties
+  ㄴapplication.yml
   ㄴlog4jdbc-log4j2.properties
   ㄴlogback.xml
   ㄴmybatis-config.xml
