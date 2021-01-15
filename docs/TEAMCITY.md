@@ -202,9 +202,6 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 !TODO https://stackoverflow.com/questions/31813080/windows-10-ssh-keys : 참고
 ```
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
-```
-!TODO 인텔리제이 설치하기 
-```
 - maven repository를 이용
 - ```https://spring.io/guides/tutorials/rest/``` 참고
 - 트리구조
@@ -246,6 +243,10 @@ target/
 
 /dist
 build/
+```
+```
+TODO
+해당 프로젝트에 대한 
 ```
 
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
