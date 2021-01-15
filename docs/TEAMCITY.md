@@ -208,6 +208,7 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 - maven repository를 이용
 - ```https://spring.io/guides/tutorials/rest/``` 참고
 - 트리구조
+```
 [Project명]
 ㄴidea
 ㄴlog
@@ -230,6 +231,7 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ㄴ.gitignore
 ㄴpom.xml
 ㄴREADME.md
+```
  
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
 - ```!TODO``` 프로젝트 2개이상 추가해보기
