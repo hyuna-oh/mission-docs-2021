@@ -236,6 +236,7 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ```
 HELP.md
 target/
+*.log
 
 .idea
 *.iws
