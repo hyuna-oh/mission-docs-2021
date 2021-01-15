@@ -250,3 +250,5 @@ build/
  
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
 - ```!TODO``` 프로젝트 2개이상 추가해보기
+- Create project를 클릭 후 Manually로 선택한 후 Name에 프로젝트명을 입력하고 Project ID에 적당한 식별자를 입력
+- 나머지는 TeamCity 빌드 부분 위키 참고
