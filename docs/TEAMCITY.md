@@ -193,14 +193,18 @@ Using no lock
 Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ```
 ## Gitlab에 프로젝트 생성
+- HOST PC에서 브라우저로 접속 후 ```localhost:80```으로 접속한 뒤 (nginx 서버가 gitlab에 설치되어 있음) UI에서 프로젝트를 생성
 ```
-!TODO
+!TODO - SSH KEY 추가해보기!
 ```
-- SSH KEY 추가해보기!
+
 ```
 !TODO https://stackoverflow.com/questions/31813080/windows-10-ssh-keys : 참고
 ```
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
+```
+!TODO 인텔리제이 설치하기 
+```
 - maven repository를 이용
 - ```https://spring.io/guides/tutorials/rest/``` 참고
 
