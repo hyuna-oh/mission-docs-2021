@@ -1,4 +1,4 @@
-# TeamCity 
+# TeamCity & Gitlab
 - 2021.01.11 ~ 2021.01.17 동안 작업한 내용
 - TeamCity는 JetBrains의 빌드 관리 및 지속적 통합 서버를 위한 빌드 관리 
 - Gitlab은 깃랩 사가 개발한 깃 저장소 및 CI/CD, 이슈 추적, 보안성 테스트 등의 기능을 갖춘 웹 기반의 데브옵스 플랫폼
@@ -207,6 +207,29 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ```
 - maven repository를 이용
 - ```https://spring.io/guides/tutorials/rest/``` 참고
-
+- 트리구조
+[Project명]
+ㄴidea
+ㄴlog
+ㄴsrc
+  ㄴpackage 명(ex) com.example.employee
+  ㄴmodel
+  ㄴrepository
+  ㄴservice
+  ㄴshared
+  ㄴutil
+  package-info.java
+  Starter
+ㄴresource
+  ㄴmybatis
+    ㄴmapper.xml
+  ㄴapplication.properties
+  ㄴlog4jdbc-log4j2.properties
+  ㄴlogback.xml
+  ㄴmybatis-config.xml
+ㄴ.gitignore
+ㄴpom.xml
+ㄴREADME.md
+ 
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
 - ```!TODO``` 프로젝트 2개이상 추가해보기
