@@ -210,7 +210,7 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 - 트리구조
 ```
 [Project명]
-ㄴidea
+ㄴ.idea
 ㄴlog
 ㄴsrc
   ㄴpackage 명(ex) com.example.employee
@@ -231,6 +231,19 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ㄴ.gitignore
 ㄴpom.xml
 ㄴREADME.md
+```
+- gitignore 파일
+```
+HELP.md
+target/
+
+.idea
+*.iws
+*.iml
+*.ipr
+
+/dist
+build/
 ```
  
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
