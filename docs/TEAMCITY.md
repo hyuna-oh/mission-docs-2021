@@ -256,5 +256,6 @@ TODO
 
 - 배포 (deploy)
 - 이는 plugin이 따로 필요한 부분임.
-- ```https://plugins.jetbrains.com/plugin/9038-octopus-deploy-integration``` 을 참고하여 octopus plugin을 설치
-- 
+- ```https://plugins.jetbrains.com/plugin/9038-octopus-deploy-integration``` 을 참고하여 octopus plugin을 설치 (zip 파일로 upload)
+- ![image](https://user-images.githubusercontent.com/57924258/104813777-9bd43080-584e-11eb-8301-f5da0e63a390.png)
+
