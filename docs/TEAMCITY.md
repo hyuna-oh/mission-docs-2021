@@ -266,6 +266,7 @@ TODO
 - 나머지는 TeamCity 빌드 부분 위키 참고 (빌드까지 가능)
 
 ### 배포 (deploy)
+#### Tomcat 8.0 설치
 1. 내가 취한 전략은, 먼저, Tomcat 8 버전을 GUEST VM에 설치한다.  
 - **NOTE** 8080 포트를 사용하고 있는지 꼭 확인한다.
 - 다음의 명령어로 Tomcat 8을 설치한다.
@@ -401,3 +402,10 @@ WantedBy=multi-user.target
 //등록된 서비스 조회
 # systemctl list-unit-files --type service |grep tomcat8
 ```
+#### TeamCity Build Configuration에 deploy Build 설정을 추가
+1. 다음 화면처럼 설정 (지워진 부분은 해당 ip 주소를 입력)
+![image](https://user-images.githubusercontent.com/57924258/104834146-ebfbd300-58e0-11eb-8b9b-7949f2f55a45.png)
+
+2.
+3.
+
