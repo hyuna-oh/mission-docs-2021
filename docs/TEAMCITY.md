@@ -402,15 +402,45 @@ WantedBy=multi-user.target
 //등록된 서비스 조회
 # systemctl list-unit-files --type service |grep tomcat8
 ```
-#### TeamCity Build Configuration에 deploy Build 설정을 추가
-1. add Build Step 클릭 후 프로젝트를 압축하는 명령어 실행
-![image](https://user-images.githubusercontent.com/57924258/104834991-c83b8b80-58e6-11eb-8910-42f5b04a29b2.png)
+#### Spring boot project에 다음의 내용들을 추가해서 war file을 target에 생성
+1. main 클래스에 SpringBootServletInitializer 상속받는 것으로 변경
+- DemoApplication.java
+```
+@SpringBootApplication
+public class DemoApplication extends SpringBootServletInitializer {
 
-2. add Build Steps 클릭 후 
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(DemoApplication.class);
+    }
+
+}
+```
+2. pom.xml에 tomcat scope를 provided로 변경하고 packaging을 war로 변경
+- pom.xml
+```
+	<packaging>war</packaging>
+  ... 생략
+  
+  <!-- 패키지를 jar로 배포하기 위해 필요 -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-tomcat</artifactId>
+    <scope>provided</scope>
+  </dependency>
+```
+
+#### TeamCity Build Configuration에 deploy Build 설정을 추가
+1. add Build Steps로 먼저 Maven을 등록
+
+2. Container deploy 등록
 ![image](https://user-images.githubusercontent.com/57924258/104834146-ebfbd300-58e0-11eb-8b9b-7949f2f55a45.png)
 
-3. Build Steps 리스트를 보면 다음과 같이 조회 가능
-![image](https://user-images.githubusercontent.com/57924258/104834935-6713b800-58e6-11eb-82d5-becb1c3fa6b7.png)
+3. 다음과 같이 Build Step들이 생성 됨
 
-3. 해당 프로젝트에 Run을 클릭
+4. 해당 프로젝트에 Run을 클릭
 
