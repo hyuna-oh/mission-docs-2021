@@ -261,9 +261,50 @@ TODO
 ```
 
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
-- ```!TODO``` 프로젝트 2개이상 추가해보기
+### 빌드
 - Create project를 클릭 후 Manually로 선택한 후 Name에 프로젝트명을 입력하고 Project ID에 적당한 식별자를 입력
 - 나머지는 TeamCity 빌드 부분 위키 참고 (빌드까지 가능)
 
-- 배포 (deploy)
+### 배포 (deploy)
+1. 내가 취한 전략은, 먼저, Tomcat 8 버전을 GUEST VM에 설치한다.  
+- **NOTE** 8080 포트를 사용하고 있는지 꼭 확인한다.
+- **NOTE** 
 
+2. 설치 후 TeamCity에서 Tomcat의 manager 디렉토리 수정 및 등록 권한을 위해 다음의 파일들을 설정한다.
+- conf 디렉터리 tomcat-users.xml 설정
+```
+# vi [tomcat 디렉토리]/conf/tomcat-users.xml
+```
+- 편집기에 다음과 같이 내용을 입력한다.
+```
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+ 
+<role rolename="admin"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<role rolename="manager"/>
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="유저명" password="비밀번호" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status" />
+ 
+</tomcat-users>
+```
+- manager 디렉터리 context.xml 설정
+```
+# vi [tomcat 디렉토리]/webapps/manager/META-INF/context.xml
+```
+- 편집기가 열리면 다음 내용을 입력한다.
+```
+<Context antiResourceLocking="false" privileged="true" >
+
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow=".*" />
+
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+</Context>
+```
