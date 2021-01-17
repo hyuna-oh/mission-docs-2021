@@ -268,9 +268,41 @@ TODO
 ### 배포 (deploy)
 1. 내가 취한 전략은, 먼저, Tomcat 8 버전을 GUEST VM에 설치한다.  
 - **NOTE** 8080 포트를 사용하고 있는지 꼭 확인한다.
-- **NOTE** 
+- 다음의 명령어로 Tomcat 8을 설치한다.
+```
+# wget http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.27/bin/apache-tomcat-8.5.27.tar.gz
 
-2. 설치 후 TeamCity에서 Tomcat의 manager 디렉토리 수정 및 등록 권한을 위해 다음의 파일들을 설정한다.
+// 압축 해체
+# tar zxvf apache-tomcat-8.5.27.tar.gz
+
+// 톰캣을 /usr/local/로 이동시키고 디렉토리 이름을 tomcat8로 변경
+# mv apache-tomcat-8.5.27 /usr/local/tomcat8
+```
+- URL 인코딩 설정
+```
+// vi /usr/local/tomcat8/conf/server.xml
+// 아래 설정을 찾아서 URIEncoding="UTF-8"을 추가한다.
+
+...
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443"
+               URIEncoding="UTF-8" />
+...
+```
+- 환경변수 설정 (CATALINA_HOME)
+```
+...
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64
+CATALINA_HOME=/usr/local/tomcat8
+CLASSPATH=$JAVA_HOME/jre/lib:$JAVA_HOME/lib/tools.jar:$CATALINA_HOME/lib-jsp-api.jar:$CATALINA_HOME/lib/servlet-api.jar
+PATH=$PATH:$JAVA_HOME/bin:/bin:/sbin
+export JAVA_HOME PATH CLASSPATH CATALINA_HOME
+```
+
+
+2. 설치 후 TeamCity에서 Tomcat의 manager 디렉토리 수정 및 등록 권한을 위해 다음의 파일들을 설정한다. (안하면 403 에러가 발생함)
 - conf 디렉터리 tomcat-users.xml 설정
 ```
 # vi [tomcat 디렉토리]/conf/tomcat-users.xml
@@ -307,4 +339,65 @@ TODO
 
   <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
 </Context>
+```
+3. conf/server.xml 파일을 다음과 같이 수정한다. (port 및 address 설정을 바꾸는 게 중요)
+```
+<Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" address="0.0.0.0" /> 
+```
+
+4. Tomcat 실행
+```
+# /usr/local/tomcat8/bin/startup.sh
+
+//톰캣 프로세스 확인
+# ps -ef|grep tomcat8
+
+// 8080 포트가 열려있는지 확인 
+# netstat -tln
+# wget http://localhost:8080/
+```
+
+5. 서비스 등록 
+- vi /etc/systemd/system/tomcat8.service
+```
+# Systemd unit file for tomcat
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+Environment="JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/"
+Environment="CATALINA_HOME=/usr/local/tomcat8"
+Environment="CATALINA_BASE=/usr/local/tomcat8"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
+
+ExecStart=/usr/local/tomcat8/bin/startup.sh
+ExecStop=/usr/local/tomcat8/bin/shutdown.sh
+
+User=root
+Group=root
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+- systemctl 설정
+```
+# systemctl daemon-reload
+# systemctl enable tomcat8
+
+// tomcat8 실행
+# systemctl start tomcat8
+```
+- 부팅 시 자동 실행
+```
+//부팅 시 자동 실행 서비스 등록
+# systemctl enable tomcat8.service
+//등록된 서비스 조회
+# systemctl list-unit-files --type service |grep tomcat8
 ```
