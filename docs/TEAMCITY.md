@@ -403,11 +403,14 @@ WantedBy=multi-user.target
 # systemctl list-unit-files --type service |grep tomcat8
 ```
 #### TeamCity Build Configuration에 deploy Build 설정을 추가
-1. add Build Steps를 하면 다음 화면처럼 설정 (지워진 부분은 해당 ip 주소를 입력)
+1. add Build Step 클릭 후 프로젝트를 압축하는 명령어 실행
+![image](https://user-images.githubusercontent.com/57924258/104834991-c83b8b80-58e6-11eb-8910-42f5b04a29b2.png)
+
+2. add Build Steps 클릭 후 
 ![image](https://user-images.githubusercontent.com/57924258/104834146-ebfbd300-58e0-11eb-8b9b-7949f2f55a45.png)
 
-2. Build Steps 리스트를 보면 다음과 같이 조회 가능
-![image](https://user-images.githubusercontent.com/57924258/104834196-38471300-58e1-11eb-835a-0a3361308f10.png)
+3. Build Steps 리스트를 보면 다음과 같이 조회 가능
+![image](https://user-images.githubusercontent.com/57924258/104834935-6713b800-58e6-11eb-82d5-becb1c3fa6b7.png)
 
 3. 해당 프로젝트에 Run을 클릭
 
