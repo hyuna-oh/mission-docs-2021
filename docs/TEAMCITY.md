@@ -194,6 +194,17 @@ Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ```
 ## Gitlab에 프로젝트 생성
 - HOST PC에서 브라우저로 접속 후 ```localhost:80```으로 접속한 뒤 (nginx 서버가 gitlab에 설치되어 있음) UI에서 프로젝트를 생성
+- *** 중요 *** : 꼭 시작전에 project path를 정해놓자!
+1. 다음의 명령어를 실행하여 vi로 gitlab.rb 편집창을 연다.
+```sudo vi /etc/gitlab/gitlab.rb```
+2. git_data_dirs 문자를 찾아 다음의 소스코드를 작성한다. (밑에는 여러 경로에 저장할 경우)
+```
+git_data_dirs({ 
+  "default" => { "path" => "/data/git-data" }, 
+  "nfs_1" => { "path" => "/mnt/nfs1/git-data" }, 
+  "nfs_2" => { "path" => "/mnt/nfs2/git-data" } 
+})
+```
 ```
 !TODO - SSH KEY 추가해보기!
 ```
@@ -255,7 +266,4 @@ TODO
 - 나머지는 TeamCity 빌드 부분 위키 참고 (빌드까지 가능)
 
 - 배포 (deploy)
-- 이는 plugin이 따로 필요한 부분임.
-- ```https://plugins.jetbrains.com/plugin/9038-octopus-deploy-integration``` 을 참고하여 octopus plugin을 설치 (zip 파일로 upload)
-- ![image](https://user-images.githubusercontent.com/57924258/104813777-9bd43080-584e-11eb-8301-f5da0e63a390.png)
 
