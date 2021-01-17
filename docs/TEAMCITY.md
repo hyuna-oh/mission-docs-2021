@@ -434,13 +434,18 @@ public class DemoApplication extends SpringBootServletInitializer {
   </dependency>
 ```
 
-#### TeamCity Build Configuration에 deploy Build 설정을 추가
-1. add Build Steps로 먼저 Maven을 등록
+#### TeamCity Build Configuration에 설정을 추가
+1. Edit Configuration - add Build Steps로 먼저 Maven을 등록
+![image](https://user-images.githubusercontent.com/57924258/104836885-4ce0d680-58f4-11eb-90de-9edc1e46a552.png)
 
 2. Container deploy 등록
+- Target : Tomcat이 설치된 IP와 PORT번호 입력 (ex)localhost:8080
+- UserName / Password : 위에서 Tomcat에 등록된 name/password를 등록 
+- Path to Archive : war file이 있는 경로
 ![image](https://user-images.githubusercontent.com/57924258/104834146-ebfbd300-58e0-11eb-8b9b-7949f2f55a45.png)
 
 3. 다음과 같이 Build Step들이 생성 됨
+![image](https://user-images.githubusercontent.com/57924258/104836858-2c188100-58f4-11eb-9ccf-6b290594edfd.png)
 
 4. 해당 프로젝트에 Run을 클릭
-
+![image](https://user-images.githubusercontent.com/57924258/104836948-b5c84e80-58f4-11eb-9078-2034ed7cec70.png)
