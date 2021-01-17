@@ -449,3 +449,29 @@ public class DemoApplication extends SpringBootServletInitializer {
 
 4. 해당 프로젝트에 Run을 클릭
 ![image](https://user-images.githubusercontent.com/57924258/104836948-b5c84e80-58f4-11eb-9078-2034ed7cec70.png)
+
+#### Centos Service에 등록
+```
+TODO : yml 파일로 바꾸기 (시간이 없어서 일단 properties 파일로 함)
+```
+- vi /etc/systemd/system/demo.service 
+```
+[Unit]
+Description=Demo Java Service
+
+[Service]
+WorkingDirectory=/opt/app
+ExecStart=/usr/lib/jvm/java-11-openjdk-11.0.9.11-2.el7_9.x86_64/bin/java -Dspring.config.location=/opt/TeamCityAgent/work/567965ce87d56df1/target/classes/application.properties  -jar /opt/app/demo-0.0.1-SNAPSHOT.war --server.port=8083
+User=root
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+- 나머지는 위키를 참조
+- 이후에는 다음과 같이 start 한 뒤 status로 상태를 확인
+```
+# systemctl start demo.service
+# systemctl status demo.service
+```
