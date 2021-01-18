@@ -213,9 +213,9 @@ git_data_dirs({
 !TODO https://stackoverflow.com/questions/31813080/windows-10-ssh-keys : 참고
 ```
 ## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
+- 현재 예시 소스로 작업한 내용은 GUEST VM의 gitlab에 등록되어 있음
 - maven repository를 이용
-- ```https://spring.io/guides/tutorials/rest/``` 참고
-- 트리구조
+- 트리구조 [예시]
 ```
 [Project명]
 ㄴ.idea
@@ -255,10 +255,7 @@ target/
 /dist
 build/
 ```
-```
-TODO
-해당 프로젝트에 대한 
-```
+- 참고 : ```https://spring.io/guides/tutorials/rest/```
 
 ## TeamCity에서 프로젝트 추가하고 빌드 설정
 ### 빌드
