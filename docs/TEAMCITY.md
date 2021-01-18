@@ -137,7 +137,7 @@ postgres=# create database teamcity;
 
 * 결국 재설치하니까 됨..ㅠㅠ
 5. TeamCity 실행
-- ```sudo sh bin/catalina.sh run``` 명령어로 실행  
+- ```sudo sh bin/catalina.sh run``` 명령어로 실행  (혹은 ```sh bin/runAll.sh start```)
 (만약 TeamCity 실행 실패시 해당 log 참조)
 ### TeamCity Server 설정
 1. TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
@@ -447,7 +447,12 @@ public class DemoApplication extends SpringBootServletInitializer {
 4. 해당 프로젝트에 Run을 클릭
 ![image](https://user-images.githubusercontent.com/57924258/104836948-b5c84e80-58f4-11eb-9078-2034ed7cec70.png)
 
-#### Centos Service에 등록
+#### Centos Service에 TeamCity 등록
+```
+TODO
+```
+
+#### Centos Service에 Spring Project 등록
 ```
 TODO : yml 파일로 바꾸기 (시간이 없어서 일단 properties 파일로 함) --> 보안에 유리. 
 application.xml은 외부에 노출되기 때문에 안 쓰는게 좋음.
