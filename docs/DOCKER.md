@@ -4,12 +4,12 @@
 - 여기서 컨테이너란? 다양한 OS에 여러 application이 올려져 있는 것을 의미
 - 각 컨테이너는 격리된 공간이기 때문에 하나의 컨테이너에 문제가 생겨도 다른 컨테이너에 영향을 끼치지 않음
 
-## Docker 시작하기 전체 실습하기
+## 1. Docker 시작하기 전체 실습하기
 - Windows 10 Pro에 설치 가능하지만 현재 Virtual Box가 설치되어 있어서 충돌이 우려됨.  
 -> 그러므로 VB Linux에서 Docker를 설치해야함..
 -> Vagrantfile을 통해 multi VM을 생성하자.
 
-### VM을 package 로 export 해둔 다음 multi VM을 통해 생성  
+### 1.1 VM을 package 로 export 해둔 다음 multi VM을 통해 생성  
 공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine  
 참고 (multi-machine) : https://askme.tistory.com/335
 - multi machine 참고
@@ -70,5 +70,5 @@ vagrant package --base [machine name as it shows in virtual box] --output /Users
 - 참고사항
 - 이슈
 
-## 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
+## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 - !TODO yml파일 먼저 생성한 뒤 수행
