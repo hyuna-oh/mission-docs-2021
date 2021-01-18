@@ -12,11 +12,47 @@
 ### VM을 package 로 export 해둔 다음 multi VM을 통해 생성  
 공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine  
 참고 (multi-machine) : https://askme.tistory.com/335
+- multi machine 참고
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+boxes = [
+  {
+    name: "server1.local",
+    eth1: "192.168.0.101",
+    mem: 1024,
+    cpu: 1
+  },
+  {
+    name: "server2.local",
+    eth1: "192.168.0.102",
+    mem: 1024,
+    cpu: 1
+  }
+]
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "nrel/CentOS-6.5-x86_64"
+
+  boxes.each do |box|
+    config.vm.define box[:name] do |srv|
+      srv.vm.hostname = box[:name]
+      srv.vm.network :private_network, ip: box[:eth1]
+
+      srv.vm.provider :virtualbox do |vb|
+        vb.memory = box[:mem]
+        vb.cpus = box[:cpu]
+      end
+    end
+  end
+end
+```
 
 ```diff
 ! TODO
--혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)  
--Vagrantfile을 package 한 명령어 적어 놓기
+혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)  
+Vagrantfile을 package 한 명령어 적어 놓기
 ```
 - package 명령어 참고
 
