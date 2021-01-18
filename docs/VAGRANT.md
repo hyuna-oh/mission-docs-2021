@@ -3,6 +3,7 @@
 - 베이그런트는 가상화 소프트웨어 (버추얼박스, 도커 컨테이너, AWS 등)의 생성 및 유지보수를 위한 오픈소스 소프트웨어 제품
 - 루비 언어로 작성됨
 - Provision : 게스트 머신을 반복적으로 생성하고 사용하기 위해 프로비져닝으로 만들어서 사용
+- Provisioning 설정은 따로 파일을 생성해서 넣어두는 것 보단 Vagrantfile에 적어두는 게 편할듯.
 - Vagrant.configure("2") 의 의미
   - 여기서, configure("2")는 버전을 의미함.
   - 최근에는 "1", "2" 두 가지 버전만을 지원하며, 버전 1의 경우 Vagrant 1.0.x 버전을, 버전 2의 경우엔 1.1+ ~ 2.0.x 버전을 나타낸다.
@@ -295,6 +296,7 @@ vagrant init mynewbox
 ```
 - add box 명령어 참고 : https://www.vagrantup.com/docs/cli/box#box-add
 - add box 전에 box를 경량화 하고자 한다면 참고 : https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
+
 ## 11. 신규 Box 파일을 웹 서버에 올려놓고 자체 Box 서버를 통해 Box 파일 내려받기
 1. Host(localhost)에 웹 서버를 설치
 - Windows 10 에서 웹 서버 구축하기
