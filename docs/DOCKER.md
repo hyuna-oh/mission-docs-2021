@@ -9,8 +9,8 @@
 -> 그러므로 VB Linux에서 Docker를 설치해야함..
 -> Vagrantfile을 통해 multi VM을 생성하자.
 
-1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성
-공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine
+### VM을 package 로 export 해둔 다음 multi VM을 통해 생성  
+공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine  
 참고 (multi-machine) : https://askme.tistory.com/335
 
 ```diff
@@ -20,7 +20,7 @@
 ```
 - package 명령어 참고
 
-1. Install virtual box and vagrant on the remote machine
+1. Install virtual box and vagrant on the remote machine  
 2. Wrap up your vagrant machine
 ```
 vagrant package --base [machine name as it shows in virtual box] --output /Users/myuser/Documents/Workspace/my.box
