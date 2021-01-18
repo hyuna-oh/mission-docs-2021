@@ -476,10 +476,28 @@ WantedBy=multi-user.target
 # systemctl status demo.service
 ```
 
-### 배포 방법2 (java 명령어를 통한 배포)
+### 배포 방법2 (java 명령어를 통한 배포 - 패키지에 tomcat이 이미 설치되어 있는 경우)
 #### system 파일 생성
 - vi /etc/systemd/system/[프로젝트 명]
 위 내용들을 참고하여 작성하면 됨
+
+#### yml 파일 작성
+- 예시 경로 : /opt/[프로젝트명]/conf/[yml 파일명].yml 
+```
+[Unit]
+Description=[프로젝트 명]
+After=syslog.target
+
+[Service]
+User=[Linux 사용자 admin 명]
+Group=[Linux 그룹 admin 명]
+WorkingDirectory=[프로젝트 경로]
+ExecStart=java -Djava.net.preferIPv4Stack=true -Dspring.config.location=application.yml -Dsun.misc.URLClassPath.disableJarChecking=true -jar [프로젝트 경로 및 명칭].jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+```
 
 #### TeamCity에서 Maven Build -> jar file copy -> systemctl restart 를 순서로 진행
 1. Maven build 시 Goal을 clean package로 설정
