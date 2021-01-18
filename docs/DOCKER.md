@@ -9,10 +9,11 @@
 -> 그러므로 VB Linux에서 Docker를 설치해야함..
 -> Vagrantfile을 통해 multi VM을 생성하자.
 
-1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성
+1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성\
+참고 (multi-VM) : https://askme.tistory.com/335
 ```
 !TODO
-package 한 명령어 
+Vagrnatfile을 package 한 명령어 
 ```
 
 - wiki 참고
