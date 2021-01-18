@@ -11,10 +11,22 @@
 
 1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성\
 참고 (multi-VM) : https://askme.tistory.com/335
+```diff
+! TODO
+- 혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)
+- Vagrantfile을 package 한 명령어 적어 놓기
 ```
-!TODO
-Vagrnatfile을 package 한 명령어 
+- package 명령어 참고
+
+1. Install virtual box and vagrant on the remote machine
+2. Wrap up your vagrant machine
 ```
+vagrant package --base [machine name as it shows in virtual box] --output /Users/myuser/Documents/Workspace/my.box
+```
+3. copy the box to your remote
+4. init the box on your remote machine by running
+```vagrant init [machine name as it shows in virtual box] /Users/myuser/Documents/Workspace/my.box```
+5. Run ```vagrant up```
 
 - wiki 참고
 - 참고사항
