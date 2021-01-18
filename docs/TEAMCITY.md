@@ -3,7 +3,7 @@
 - TeamCity는 JetBrains의 빌드 관리 및 지속적 통합 서버를 위한 빌드 관리 
 - Gitlab은 깃랩 사가 개발한 깃 저장소 및 CI/CD, 이슈 추적, 보안성 테스트 등의 기능을 갖춘 웹 기반의 데브옵스 플랫폼
 
-## Vagrant + CentOS 7에서 Gitlab 설치
+## 1. Vagrant + CentOS 7에서 Gitlab 설치
 1. ```vagrant init bento/centos-7``` 으로 새로운 CentOS 7 프로젝트 생성 (https://app.vagrantup.com/boxes/search 참고)
 2. 생성 후 Gitlab 설치
 - install_gitlab.sh 라는 쉘스크립트를 Vagrantfile이 있는 디렉토리에 작성 후 저장한 뒤 ``reload --provision`` 명령어로 실행시킨다.  
@@ -38,9 +38,9 @@ Chef Infra Client finished, 567/1530 resources updated in 03 minutes 44 seconds
 gitlab Reconfigured!
 ```
 
-## Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
-### TeamCity Server 설치
-#### **- 웬만하면 sudo나 root 계정으로 접속하기**
+## 2. Vagrant + CentOS 7에서 TeamCity Server 및 TeamCity Agent 설치
+### 2.1 TeamCity Server 설치
+- **- 웬만하면 sudo나 root 계정으로 접속하기**  
 1. java를 먼저 설치한 후 진행
 ```
 # 설치 된 자바버전을 확인 후
@@ -139,12 +139,12 @@ postgres=# create database teamcity;
 5. TeamCity 실행
 - ```sudo sh bin/catalina.sh run``` 명령어로 실행  (혹은 ```sh bin/runAll.sh start```)
 (만약 TeamCity 실행 실패시 해당 log 참조)
-### TeamCity Server 설정
+### 2.2 TeamCity Server 설정
 1. TeamCity의 기본 포트는 8111 이므로, 로컬 브라우저에서 [VM IP]:8111로 접속
 2. database type : postgresql / database host : localhost / name : teamcity / username : postgres / passwd : postgres 로 설정
 3. admin 계정 생성
 
-### TeamCity Agent 설치
+### 2.3 TeamCity Agent 설치
 - TeamCity는 빌드를 전담하는 Agent가 필요. 이 Agent는 TeamCity가 설치되어 있는 서버에 설치를 해도 되고, 다른 서버에 설치를 해도 됨. 
 - TeamCity Build Agent는 소스코드를 다운로드하고 빌드를 수행하기 때문에 Disk 소비가 많으므로 디스크 공간이 충분한 파티션을 선택
 1. "메뉴 > Agents > Install Build Agents"를 클릭
@@ -192,7 +192,7 @@ Lock file: /root/build-agent/logs/buildAgent.properties.lock
 Using no lock
 Done [6532], see log at /root/build-agent/logs/teamcity-agent.log
 ```
-## Gitlab에 프로젝트 생성
+## 3. Gitlab에 프로젝트 생성
 - HOST PC에서 브라우저로 접속 후 ```localhost:80```으로 접속한 뒤 (nginx 서버가 gitlab에 설치되어 있음) UI에서 프로젝트를 생성
 - *** 중요 *** : 꼭 시작전에 project path를 정해놓자!
 1. 다음의 명령어를 실행하여 vi로 gitlab.rb 편집창을 연다.
@@ -212,7 +212,7 @@ git_data_dirs({
 ```
 !TODO https://stackoverflow.com/questions/31813080/windows-10-ssh-keys : 참고
 ```
-## https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
+## 4. https://start.spring.io/ 에서 REST Web 프로젝트를 구성해서 Gitlab 프로젝트에 소스코드 추가
 - 현재 예시 소스로 작업한 내용은 GUEST VM의 gitlab에 등록되어 있음
 - maven repository를 이용
 - 트리구조 [예시]
@@ -257,13 +257,13 @@ build/
 ```
 - 참고 : ```https://spring.io/guides/tutorials/rest/```
 
-## TeamCity에서 프로젝트 추가하고 빌드 설정
-### 빌드
+## 5. TeamCity에서 프로젝트 추가하고 빌드 설정
+### 5.1 빌드
 - Create project를 클릭 후 Manually로 선택한 후 Name에 프로젝트명을 입력하고 Project ID에 적당한 식별자를 입력
 - 나머지는 TeamCity 빌드 부분 위키 참고 (빌드까지 가능)
 
-### 배포 방법1 (Container Deploy를 통한 배포)  
-#### Tomcat 8.0 설치
+### 5.2 배포 방법1 (Container Deploy를 통한 배포)  
+#### 5.2.1 Tomcat 8.0 설치
 1. Tomcat 8 버전을 GUEST VM에 설치한다.  
 - **NOTE** 8080 포트를 사용하고 있는지 꼭 확인한다.
 - 다음의 명령어로 Tomcat 8을 설치한다.
@@ -399,7 +399,7 @@ WantedBy=multi-user.target
 //등록된 서비스 조회
 # systemctl list-unit-files --type service |grep tomcat8
 ```
-#### Spring boot project에 다음의 내용들을 추가해서 war file을 target에 생성
+#### 5.2.2 Spring boot project에 다음의 내용들을 추가해서 war file을 target에 생성
 1. main 클래스에 SpringBootServletInitializer 상속받는 것으로 변경
 - DemoApplication.java
 ```
@@ -431,7 +431,7 @@ public class DemoApplication extends SpringBootServletInitializer {
   </dependency>
 ```
 
-#### TeamCity Build Configuration에 설정을 추가
+#### 5.2.3 TeamCity Build Configuration에 설정을 추가
 1. Edit Configuration - add Build Steps로 먼저 Maven을 등록
 ![image](https://user-images.githubusercontent.com/57924258/104836885-4ce0d680-58f4-11eb-90de-9edc1e46a552.png)
 
@@ -447,12 +447,12 @@ public class DemoApplication extends SpringBootServletInitializer {
 4. 해당 프로젝트에 Run을 클릭
 ![image](https://user-images.githubusercontent.com/57924258/104836948-b5c84e80-58f4-11eb-9078-2034ed7cec70.png)
 
-#### Centos Service에 TeamCity 등록
+#### 5.2.4 Centos Service에 TeamCity 등록
 ```
 TODO
 ```
 
-#### Centos Service에 Spring Project 등록
+#### 5.2.5 Centos Service에 Spring Project 등록
 ```
 TODO : yml 파일로 바꾸기 (시간이 없어서 일단 properties 파일로 함) --> 보안에 유리. 
 application.xml은 외부에 노출되기 때문에 안 쓰는게 좋음.
@@ -480,8 +480,8 @@ WantedBy=multi-user.target
 # systemctl status demo.service
 ```
 
-### 배포 방법2 (java 명령어를 통한 배포 - 패키지에 tomcat이 이미 설치되어 있는 경우)
-#### system 파일 생성
+### 5.3 배포 방법2 (java 명령어를 통한 배포 - 패키지에 tomcat이 이미 설치되어 있는 경우)
+#### 5.3.1 system 파일 생성
 - vi /etc/systemd/system/[프로젝트 명]
 - 위 내용들을 참고하여 작성하면 됨 (아래는 예시)
 ```
@@ -500,7 +500,7 @@ SuccessExitStatus=143
 WantedBy=multi-user.target
 ```
 
-#### yml 파일 작성
+#### 5.3.2 yml 파일 작성
 - /opt/[프로젝트명]/conf/[yml 파일명].yml 
 ```
 spring:
@@ -665,7 +665,7 @@ management:
 ```
 
 
-#### TeamCity에서 Maven Build -> jar file copy -> systemctl restart 를 순서로 진행
+#### 5.3.3 TeamCity에서 Maven Build -> jar file copy -> systemctl restart 를 순서로 진행
 1. Maven build 시 Goal을 clean package로 설정
 2. Command Line으로 jar file을 복사할 때는 다음과 같이 설정
 - 예시 
