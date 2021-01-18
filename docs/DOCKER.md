@@ -13,8 +13,8 @@
 참고 (multi-VM) : https://askme.tistory.com/335
 ```diff
 ! TODO
-- 혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)
-- Vagrantfile을 package 한 명령어 적어 놓기
+-혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)  
+-Vagrantfile을 package 한 명령어 적어 놓기
 ```
 - package 명령어 참고
 
