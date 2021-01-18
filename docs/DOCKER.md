@@ -9,8 +9,10 @@
 -> 그러므로 VB Linux에서 Docker를 설치해야함..
 -> Vagrantfile을 통해 multi VM을 생성하자.
 
-1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성\
-참고 (multi-VM) : https://askme.tistory.com/335
+1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성
+공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine
+참고 (multi-machine) : https://askme.tistory.com/335
+
 ```diff
 ! TODO
 -혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)  
