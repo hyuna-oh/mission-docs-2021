@@ -454,6 +454,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 ```
 TODO : yml 파일로 바꾸기 (시간이 없어서 일단 properties 파일로 함) --> 보안에 유리. 
 application.xml은 외부에 노출되기 때문에 안 쓰는게 좋음.
+war에 yml 파일이 포함되는지 한번 확인해보기.
 ```
 - vi /etc/systemd/system/demo.service 
 ```
