@@ -265,9 +265,9 @@ TODO
 - Create project를 클릭 후 Manually로 선택한 후 Name에 프로젝트명을 입력하고 Project ID에 적당한 식별자를 입력
 - 나머지는 TeamCity 빌드 부분 위키 참고 (빌드까지 가능)
 
-### 배포 (deploy)
+### 배포 방법1 (Container Deploy를 통한 배포)  
 #### Tomcat 8.0 설치
-1. 내가 취한 전략은, 먼저, Tomcat 8 버전을 GUEST VM에 설치한다.  
+1. Tomcat 8 버전을 GUEST VM에 설치한다.  
 - **NOTE** 8080 포트를 사용하고 있는지 꼭 확인한다.
 - 다음의 명령어로 Tomcat 8을 설치한다.
 ```
@@ -474,4 +474,24 @@ WantedBy=multi-user.target
 ```
 # systemctl start demo.service
 # systemctl status demo.service
+```
+
+### 배포 방법2 (java 명령어를 통한 배포)
+#### system 파일 생성
+- vi /etc/systemd/system/[프로젝트 명]
+위 내용들을 참고하여 작성하면 됨
+
+#### TeamCity에서 Maven Build -> jar file copy -> systemctl restart 를 순서로 진행
+1. Maven build 시 Goal을 clean package로 설정
+2. Command Line으로 jar file을 복사할 때는 다음과 같이 설정
+- 예시 
+```
+ls -lsa [이전 디렉토리]
+cp [이전 파일 경로 및 파일명]  [복사 파일 경로 및 파일명]
+chown admin:admin [복사 파일 경로 및 파일명]
+ls -lsa [복사 디렉토리]
+```
+3. Command Line으로 systemctl 명령어로 해당 파일 restart
+```
+systemctl restart [프로젝트 명]
 ```
