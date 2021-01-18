@@ -452,7 +452,8 @@ public class DemoApplication extends SpringBootServletInitializer {
 
 #### Centos Service에 등록
 ```
-TODO : yml 파일로 바꾸기 (시간이 없어서 일단 properties 파일로 함)
+TODO : yml 파일로 바꾸기 (시간이 없어서 일단 properties 파일로 함) --> 보안에 유리. 
+application.xml은 외부에 노출되기 때문에 안 쓰는게 좋음.
 ```
 - vi /etc/systemd/system/demo.service 
 ```
@@ -479,10 +480,7 @@ WantedBy=multi-user.target
 ### 배포 방법2 (java 명령어를 통한 배포 - 패키지에 tomcat이 이미 설치되어 있는 경우)
 #### system 파일 생성
 - vi /etc/systemd/system/[프로젝트 명]
-위 내용들을 참고하여 작성하면 됨
-
-#### yml 파일 작성
-- 예시 경로 : /opt/[프로젝트명]/conf/[yml 파일명].yml 
+- 위 내용들을 참고하여 작성하면 됨 (아래는 예시)
 ```
 [Unit]
 Description=[프로젝트 명]
@@ -498,6 +496,171 @@ SuccessExitStatus=143
 [Install]
 WantedBy=multi-user.target
 ```
+
+#### yml 파일 작성
+- /opt/[프로젝트명]/conf/[yml 파일명].yml 
+```
+spring:
+  application:
+    name: 프로젝트명
+
+  ###################
+  ## Auto Configuration
+  ###################
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.actuate.autoconfigure.solr.SolrHealthContributorAutoConfiguration
+
+  ###################
+  ## JDBC
+  ###################
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:log4jdbc:postgresql://[ip]:[port]/[프로젝트명]
+      username: 사용자 명
+      password: 사용자 패스워드
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      connection-test-query: SELECT 1
+      maximum-pool-size: 10
+      minimum-idle: 3
+    sql-script-encoding: UTF-8
+    continue-on-error: true
+    initialization-mode: always
+
+  ###################
+  ## Hibernate
+  ###################
+
+  jpa:
+    generate-ddl: false
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+
+  ###################
+  ## MVC
+  ###################
+
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    locale: ko_KR
+
+  ###################
+  ## Data REST
+  ###################
+
+  data:
+    rest:
+      base-path: /api
+
+  ###################
+  ## Data Redis
+  ###################
+
+  redis:
+    host: [ip]
+    port: [port]
+
+###################
+## Web Container
+###################
+
+server:
+  address: 0.0.0.0
+  port: [port]
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript
+  http2:
+    enabled: true
+  error:
+    include-exception: true
+    include-stacktrace: always
+    whitelabel:
+      enabled: false
+  tomcat:
+    threads:
+      max: 120
+    max-http-form-post-size: -1
+  servlet:
+    session:
+      timeout: 1440m
+
+###################
+## Application
+###################
+
+app:
+  dev-mode: true
+  cors-allow-origin-hosts: http://[ip]:[port], http://[ip]:[port]
+  ranger:
+    url: http://[ip]:[port]
+    username: [id]
+    password: [password]
+    impala-service-name: [service name]
+  ldap:
+    prefix:
+      base: [DNS 명칭]
+      admin: [Admin 정보]
+    ldap-server-url: ldap://[ip]:[port]
+    ldap-server-admin-password: [password]
+
+###################
+## Eureka
+###################
+
+eureka:
+  server:
+    eviction-interval-timer-in-ms: 1000
+    registry-sync-retry-wait-ms: 0
+  instance:
+    appname: [appName]
+  client:
+    service-url:
+      defaultZone: http://[ip]:[port]/[zone 명칭]
+    register-with-eureka: false
+    fetch-registry: false
+
+###################
+## Logging
+###################
+
+logging:
+  config: [log 경로 및 log명].xml
+
+###################
+## Management
+###################
+
+management:
+  health:
+    mail:
+      enabled: false
+  endpoint:
+    env:
+      enabled: true
+    beans:
+      enabled: true
+    threaddump:
+      enabled: true
+    heapdump:
+      enabled: true
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+```
+
 
 #### TeamCity에서 Maven Build -> jar file copy -> systemctl restart 를 순서로 진행
 1. Maven build 시 Goal을 clean package로 설정
