@@ -7,6 +7,14 @@
 ## Docker 시작하기 전체 실습하기
 - Windows 10 Pro에 설치 가능하지만 현재 Virtual Box가 설치되어 있어서 충돌이 우려됨.  
 -> 그러므로 VB Linux에서 Docker를 설치해야함..
+-> Vagrantfile을 통해 multi VM을 생성하자.
+
+1. 먼저 VM을 package 화 시켜놓고 multi VM을 통해 생성
+```
+!TODO
+package 한 명령어 
+```
+
 - wiki 참고
 - 참고사항
 - 이슈
