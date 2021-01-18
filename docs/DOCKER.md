@@ -19,12 +19,14 @@
 
 boxes = [
   {
+    os: "",
     name: "server1.local",
     eth1: "192.168.0.101",
     mem: 1024,
     cpu: 1
   },
   {
+    os: "",
     name: "server2.local",
     eth1: "192.168.0.102",
     mem: 1024,
@@ -33,10 +35,11 @@ boxes = [
 ]
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "nrel/CentOS-6.5-x86_64"
+# config.vm.box = "nrel/CentOS-6.5-x86_64"
 
   boxes.each do |box|
     config.vm.define box[:name] do |srv|
+      srv.vm.box = box[:os]
       srv.vm.hostname = box[:name]
       srv.vm.network :private_network, ip: box[:eth1]
 
