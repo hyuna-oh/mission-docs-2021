@@ -14,9 +14,6 @@
 참고 (multi-machine) : https://askme.tistory.com/335
 - multi machine 참고
 ```
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 boxes = [
   {
     os: "",
@@ -52,11 +49,6 @@ Vagrant.configure(2) do |config|
 end
 ```
 
-```diff
-! TODO
-혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)  
-Vagrantfile을 package 한 명령어 적어 놓기
-```
 ### Ubuntu 16.04 설치하기
 ```
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
@@ -76,10 +68,16 @@ docker-ce - Docker: the open-source application container engine
 ```
 sudo apt install docker-ce
 ```
+- docker image 다운로드
+```
+docker pull ubuntu 
+docker run -i -t ubuntu       
+```
+- docker 목록 확인
+```
+docker images
+```
 
-- wiki 참고
-- 참고사항
-- 이슈
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 - !TODO yml파일 먼저 생성한 뒤 수행
