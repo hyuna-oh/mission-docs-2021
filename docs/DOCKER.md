@@ -57,17 +57,25 @@ end
 혹시 모르니 Vagrantfile 을 git에 configuration 폴더에 넣어두기 (provision 관련 파일도 올려두기)  
 Vagrantfile을 package 한 명령어 적어 놓기
 ```
-- package 명령어 참고
+### Ubuntu 16.04 설치하기
+```
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+```
 
-1. Install virtual box and vagrant on the remote machine  
-2. Wrap up your vagrant machine
 ```
-vagrant package --base [machine name as it shows in virtual box] --output /Users/myuser/Documents/Workspace/my.box
+sudo apt update
+apt-cache search docker-ce
 ```
-3. copy the box to your remote
-4. init the box on your remote machine by running
-```vagrant init [machine name as it shows in virtual box] /Users/myuser/Documents/Workspace/my.box```
-5. Run ```vagrant up```
+- 결과
+```
+docker-ce - Docker: the open-source application container engine
+```
+- docker-ce 설치
+```
+sudo apt install docker-ce
+```
 
 - wiki 참고
 - 참고사항
