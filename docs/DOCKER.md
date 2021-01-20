@@ -12,7 +12,7 @@
 ### 1.1 VM을 package 로 export 해둔 다음 multi VM을 통해 생성  
 공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine  
 참고 (multi-machine) : https://askme.tistory.com/335
-- multi machine 참고
+- multi machine 참고 [실패함ㅠㅠ]
 ```
 boxes = [
   {
