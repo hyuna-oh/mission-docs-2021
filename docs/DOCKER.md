@@ -12,7 +12,7 @@
 ### 1.1 VM을 package 로 export 해둔 다음 multi VM을 통해 생성  
 공식사이트 (multi-machine) : https://www.vagrantup.com/docs/multi-machine  
 참고 (multi-machine) : https://askme.tistory.com/335
-- multi machine 참고 [실패함ㅠㅠ]
+- multi machine 참고 [너무 느려져서 실패함ㅠㅠ 동작은 잘 됨. 다만 share folder는 지정못하는듯 함.]
 ```
 boxes = [
   {
@@ -49,7 +49,7 @@ Vagrant.configure(2) do |config|
 end
 ```
 
-### Ubuntu 16.04 설치하기
+### Ubuntu에 Ubuntu 16.04 image 다운받기
 ```
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -76,6 +76,34 @@ docker run -i -t ubuntu
 - docker 목록 확인
 ```
 docker images
+```
+
+### Centos 7 에서 Ubuntu 16.04 image 다운받기
+
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce
+- 설치
+```
+# 1. yum 패키지 업데이트
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum -y update
+# 2. docker & docker registry 설정 및 설치
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum -y install docker docker-registry
+yum install docker-ce
+# 3. 부팅 시 실행하도록 등록
+systemctl enable docker.service
+# 4. 도커 실행
+systemctl start docker.service
+# 5. 도커 status 확인
+systemctl status docker.service
+# 6. 도커 컨테이너 다운로드
+docker pull ubuntu
+```
+- 다음과 같은 에러메시지 발생
+```
+Error response from daemon: Get https://registry-1.docker.io/v2/: 45 net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 
 
