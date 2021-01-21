@@ -80,24 +80,26 @@ docker images
 
 ### Centos 7 에서 Ubuntu 16.04 image 다운받기
 
-yum install -y yum-utils device-mapper-persistent-data lvm2
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install docker-ce
 - 설치
 ```
 # 1. yum 패키지 업데이트
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum -y update
+
 # 2. docker & docker registry 설정 및 설치
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum -y install docker docker-registry
 yum install docker-ce
+
 # 3. 부팅 시 실행하도록 등록
 systemctl enable docker.service
+
 # 4. 도커 실행
 systemctl start docker.service
+
 # 5. 도커 status 확인
 systemctl status docker.service
+
 # 6. 도커 컨테이너 다운로드
 docker pull ubuntu
 ```
