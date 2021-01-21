@@ -103,11 +103,11 @@ sudo yum -y update
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 # docker 목록 조회 및 설치
-yum list docker-ce --showduplicates | sort -r
+sudo yum -y list docker-ce --showduplicates | sort -r
 sudo yum -y install docker docker-registry
-sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum -y install docker-ce docker-ce-cli containerd.io
 ````
-- 여기서 도커를 특정 버전으로 다운받고 싶다면, ```$ sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io``` 명령어를 수행하면 됨.
+- 여기서 도커를 특정 버전으로 다운받고 싶다면, ```$ sudo yum -y install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io``` 라는 명령어를 수행하면 됨.
 
 #### docker 실행
 ```
