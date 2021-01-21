@@ -54,27 +54,13 @@ end
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
-```
-
-```
 sudo apt update
-apt-cache search docker-ce
-```
-- 결과
-```
-docker-ce - Docker: the open-source application container engine
-```
-- docker-ce 설치
-```
+# docker-ce 설치
 sudo apt install docker-ce
-```
-- docker image 다운로드
-```
+# docker image 다운로드
 docker pull ubuntu 
 docker run -i -t ubuntu       
-```
-- docker 목록 확인
-```
+# docker 목록 확인
 docker images
 ```
 
