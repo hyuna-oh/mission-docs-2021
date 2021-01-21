@@ -79,33 +79,59 @@ docker images
 ```
 
 ### Centos 7 에서 Ubuntu 16.04 image 다운받기
+- Centos7에 docker install 문서 : https://docs.docker.com/engine/install/centos/
 
-- 설치
+#### yum으로 이전 docker 삭제
 ```
-# 1. yum 패키지 업데이트
-yum install -y yum-utils device-mapper-persistent-data lvm2
-yum -y update
+$ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+```
 
-# 2. docker & docker registry 설정 및 설치
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum -y install docker docker-registry
-yum install docker-ce
+#### yum으로 설치
+```
+# yum 패키지 업데이트
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum -y update
 
-# 3. 부팅 시 실행하도록 등록
-systemctl enable docker.service
+# docker registry 설정
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-# 4. 도커 실행
-systemctl start docker.service
+# docker 목록 조회 및 설치
+yum list docker-ce --showduplicates | sort -r
+sudo yum -y install docker docker-registry
+sudo yum install docker-ce docker-ce-cli containerd.io
+````
+- 여기서 도커를 특정 버전으로 다운받고 싶다면, ```$ sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io``` 명령어를 수행하면 됨.
 
-# 5. 도커 status 확인
-systemctl status docker.service
+#### docker 실행
+```
+# 부팅 시 실행하도록 등록
+sudo systemctl enable docker.service
 
-# 6. 도커 컨테이너 다운로드
-docker pull ubuntu
+# 도커 실행
+sudo systemctl start docker.service
+
+# 도커 status 확인
+sudo systemctl status docker.service
+
+# 도커 설치 확인
+sudo docker run hello-world
+```
+
+#### 도커 이미지 pull 
+```
+# 도커 컨테이너 다운로드
+sudo docker pull ubuntu
 ```
 - 다음과 같은 에러메시지 발생
 ```
-Error response from daemon: Get https://registry-1.docker.io/v2/: 45 net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+Error response from daemon: Get [해당 url]: 45 net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 
 
