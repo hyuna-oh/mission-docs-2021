@@ -127,6 +127,7 @@ sudo mkdir -p /etc/systemd/system/docker.service.d
 
 2. 프록시 서버 설치  
 - https://ivps.tistory.com/25
+- http://www.gnujava.com/board/article_view.jsp?board_no=12&article_no=2211
 
 3. 파일 생성
 - Create a file named /etc/systemd/system/docker.service.d/http-proxy.conf that adds the HTTP_PROXY environment variable:
