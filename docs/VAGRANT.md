@@ -198,6 +198,10 @@ Vagrant.configure("2") do |config|
   # host 파일경로, guest 파일경로
 end
 ```
+- 참고로 특정 디렉토리를 except 하고싶다면 다음의 명령어를 수행
+```
+   config.vm.synced_folder ".", "/vagrant", type: "virtualbox", rsync__exclude: ".git/"
+```
 ![image](https://user-images.githubusercontent.com/57924258/103769489-b85eb480-5067-11eb-96eb-0af7477478cc.png)
 
 - 여기서 host는 local 디렉토리, guest는 VM 디렉토리를 의미함.
