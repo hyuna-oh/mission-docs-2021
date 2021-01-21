@@ -119,7 +119,21 @@ sudo docker pull ubuntu
 ```
 Error response from daemon: Get [해당 url]: 45 net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
+- 해결책 1) https://docs.docker.com/config/daemon/systemd/#httphttps-proxy 을 참고하여 프록시 설정
+1. 디렉토리 생성  
+```
+sudo mkdir -p /etc/systemd/system/docker.service.d
+```
 
+2. 프록시 서버 설치  
+- https://ivps.tistory.com/25
+
+3. 파일 생성
+- Create a file named /etc/systemd/system/docker.service.d/http-proxy.conf that adds the HTTP_PROXY environment variable:
+```
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:80"
+```  
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 - !TODO yml파일 먼저 생성한 뒤 수행
