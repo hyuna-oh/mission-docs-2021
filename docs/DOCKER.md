@@ -65,7 +65,7 @@ docker images
 ```
 
 ### Centos 7 에서 Ubuntu 16.04 image 다운받기
-- Centos7에 docker install 문서 : https://docs.docker.com/engine/install/centos/
+- Centos 7 docker install 문서 : https://docs.docker.com/engine/install/centos/
 
 #### yum으로 이전 docker 삭제
 ```
