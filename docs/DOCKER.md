@@ -125,16 +125,15 @@ Error response from daemon: Get [해당 url]: 45 net/http: request canceled whil
 sudo mkdir -p /etc/systemd/system/docker.service.d
 ```
 
-2. 프록시 서버 설치  
-- https://ivps.tistory.com/25
-- http://www.gnujava.com/board/article_view.jsp?board_no=12&article_no=2211
-
-3. 파일 생성
+2. 파일 생성
 - Create a file named /etc/systemd/system/docker.service.d/http-proxy.conf that adds the HTTP_PROXY environment variable:
 ```
 [Service]
 Environment="HTTP_PROXY=http://proxy.example.com:80"
 ```  
+
+### pull 이나 search 할 때 에러 날 경우
+#### 그냥 proxy 파일에서 [Service] 구문 부분을 제외하고 모든 항목을 지운다. 그러면 됨...
 ### docker container의 CPU 및 MEMORY 제한
 
 #### 주의 : 반드시 stop 및 rm으로 현재 container가 없는 상태에서 진행해야 함.
