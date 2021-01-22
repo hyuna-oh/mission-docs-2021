@@ -135,6 +135,9 @@ sudo mkdir -p /etc/systemd/system/docker.service.d
 [Service]
 Environment="HTTP_PROXY=http://proxy.example.com:80"
 ```  
+### docker container의 CPU 및 MEMORY 제한
+
+#### 주의 : 반드시 stop 및 rm으로 현재 container가 없는 상태에서 진행해야 함.
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 - !TODO yml파일 먼저 생성한 뒤 수행
