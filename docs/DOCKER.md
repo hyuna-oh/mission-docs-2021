@@ -133,9 +133,9 @@ Environment="HTTP_PROXY=http://proxy.example.com:80"
 ```  
 
 ### pull 이나 search 할 때 에러 날 경우
-#### 그냥 proxy 파일에서 [Service] 구문 부분을 제외하고 모든 항목을 지운다. 그러면 됨...
+-  그냥 proxy 파일에서 [Service] 구문 부분을 제외하고 모든 항목을 지운다. 그러면 됨...
 ### docker container의 CPU 및 MEMORY 제한
-#### 주의 : 반드시 stop 및 rm으로 현재 container가 없는 상태에서 진행해야 함.
+-  주의 : 반드시 stop 및 rm으로 현재 container가 없는 상태에서 진행해야 함.
 ### build시 contextPath를 지정할 경우
 - contextPath란, Docker 이미지 생성시(docker build  커맨드) Dockerfile을 로딩하는 현재 디렉토리 (-f 옵션으로 위치는 변경이 가능)  
 - 주의 ㅣ -f 옵션을 사용할 때는 꼭 ``` docker build --no-cache -t helloapp:v2 -f dockerfiles/Dockerfile dockerfiles ``` 명령어와 같이 Dockerfile이 있는 곳의 경로가 같아야 함.  
@@ -143,7 +143,7 @@ Environment="HTTP_PROXY=http://proxy.example.com:80"
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 ### 1. TeamCity를 통해 빌드
-### 2. /etc/systemd/system/demo.service 에 다음의 내용을 입력
+### 2. /etc/systemd/system/demo.service 에 다음의 내용을 입력하여 
 ```
 [Unit]
 Description=Demo Java Service
@@ -163,7 +163,32 @@ WantedBy=multi-user.target
 $ systemctl start demo.service
 $ systemctl status demo.service
 ```
-### 3. 
+### 3. 이미지 생성 
+- 자세한 Spring boot와 docker에 관한 내용은 https://spring.io/guides/gs/spring-boot-docker/ 를 참고
+- Dockerfile 파일 작성
+```
+# FROM으로 기반이 되는 이미지를 생성
+FROM centos
+FROM openjdk:8-jdk-alpine
+# 작성자 정보
+LABEL maintainer="hyuna oh"
+# FROM에서 설정한 이미지 최 상단에서 스크립트 혹은 커맨드를 실행 
+# 그러므로 jdk 설정시 다음의 커맨드들이 먼저 작성됨
+RUN yarn update
+RUN addgroup -S spring && adduser -S spring -G spring
+# 명령을 실행할 사용자
+USER spring:spring
+# CMD, ENTRYPOINT에서 사용할 경로
+WORKDIR /opt/app/docker/spring
+# 변수 설정
+ARG WAR_FILE=target/*.war
+# 파일을 복사
+COPY ${WAR_FILE} spring-demo.jar
+# 컨테이너가 시작되었을 때 다음의 명령어를 실행
+ENTRYPOINT ["java","-jar","/spring-demo.jar"]
+```
 
+### 4. 이미지 적용
 
-### 4.
+- docker build -t springio/gs-spring-boot-docker .
+- docker run -p 8080:8080 springio/gs-spring-boot-docker
