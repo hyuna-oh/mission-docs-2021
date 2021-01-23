@@ -148,27 +148,32 @@ Environment="HTTP_PROXY=http://proxy.example.com:80"
 - Dockerfile 파일 작성
 ```
 # FROM으로 기반이 되는 이미지를 생성
-FROM centos
+# Multi Stage Build로 FROM을 두번 수행
+FROM centos:7
+
+# centos7 와 별개로 수행됨
 FROM openjdk:8-jdk-alpine
 # 작성자 정보
 LABEL maintainer="hyuna oh"
 # FROM에서 설정한 이미지 최 상단에서 스크립트 혹은 커맨드를 실행 
 # 그러므로 jdk 설정시 다음의 커맨드들이 먼저 작성됨
-RUN yarn update
 RUN addgroup -S spring && adduser -S spring -G spring
 # 명령을 실행할 사용자
 USER spring:spring
 # CMD, ENTRYPOINT에서 사용할 경로
-WORKDIR /opt/app/docker/spring
+WORKDIR /opt/app
 # 변수 설정
-ARG WAR_FILE=target/*.war
+ARG WAR_FILE=demo-0.0.1-SNAPSHOT.war
 # 파일을 복사
-COPY ${WAR_FILE} spring-demo.jar
+COPY ${WAR_FILE} spring-build/demo-0.0.1-SNAPSHOT.war
+# 포트 번호 명시 (실제로는 run 명령어와 수행해야 함)
+EXPOSE 8083
 # 컨테이너가 시작되었을 때 다음의 명령어를 실행
-ENTRYPOINT ["java","-jar","/spring-demo.jar"]
+ENTRYPOINT ["java","-jar","spring-build/demo-0.0.1-SNAPSHOT.war"]
 ```
 
 ### 3. 이미지 적용 후 run & start
 
-- docker build -t springio/gs-spring-boot-docker .
-- docker run -p 8080:8080 springio/gs-spring-boot-docker
+- docker build 명령어 : ``` docker build -t demo-spring-boot-docker .```
+
+- docker run 명령어 : ``` docker run -p 8083:8083 demo-spring-boot-docker```
