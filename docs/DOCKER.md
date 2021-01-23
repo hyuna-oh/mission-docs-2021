@@ -172,7 +172,7 @@ EXPOSE 8083
 ENTRYPOINT ["java","-jar","spring-build/demo-0.0.1-SNAPSHOT.war"]
 ```
 
-### 3. 이미지 적용 후 run & start
+### 3. 이미지 적용 후 빌드 및 진행
 
 - docker build 명령어 : ``` docker build -t demo-spring-boot-docker .```
 
