@@ -135,8 +135,11 @@ Environment="HTTP_PROXY=http://proxy.example.com:80"
 ### pull 이나 search 할 때 에러 날 경우
 #### 그냥 proxy 파일에서 [Service] 구문 부분을 제외하고 모든 항목을 지운다. 그러면 됨...
 ### docker container의 CPU 및 MEMORY 제한
-
 #### 주의 : 반드시 stop 및 rm으로 현재 container가 없는 상태에서 진행해야 함.
+### build시 contextPath를 지정할 경우
+- contextPath란, Docker 이미지 생성시(docker build  커맨드) Dockerfile을 로딩하는 현재 디렉토리 (-f 옵션으로 위치는 변경이 가능)  
+- 주의 ㅣ -f 옵션을 사용할 때는 꼭 ``` docker build --no-cache -t helloapp:v2 -f dockerfiles/Dockerfile dockerfiles ``` 명령어와 같이 Dockerfile이 있는 곳의 경로가 같아야 함.  
+(안그럼 에러가 발생함)
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 - !TODO yml파일 먼저 생성한 뒤 수행
