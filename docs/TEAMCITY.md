@@ -679,3 +679,24 @@ ls -lsa [복사 디렉토리]
 ```
 systemctl restart [프로젝트 명]
 ```
+
+## 6. TeamCity에 직접 내 프로젝트를 적용
+### /etc/systemd/system/demo.service 에 다음의 내용을 입력하여 service에 
+```
+[Unit]
+Description=Demo Java Service
+
+[Service]
+WorkingDirectory=/opt/app
+ExecStart=/usr/lib/jvm/java-11-openjdk-11.0.9.11-2.el7_9.x86_64/bin/java -Dspring.config.location=/opt/TeamCityAgent/work/567965ce87d56df1/target/classes/application.yml  -jar /opt/app/demo-0.0.1-SNAPSHOT.war --server.port=8083
+User=root
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+- 다음의 명령어로 재시작
+```
+$ systemctl start demo.service
+$ systemctl status demo.service
