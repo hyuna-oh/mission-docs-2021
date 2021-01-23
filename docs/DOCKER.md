@@ -143,27 +143,7 @@ Environment="HTTP_PROXY=http://proxy.example.com:80"
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
 ### 1. TeamCity를 통해 빌드
-### 2. /etc/systemd/system/demo.service 에 다음의 내용을 입력하여 
-```
-[Unit]
-Description=Demo Java Service
-
-[Service]
-WorkingDirectory=/opt/app
-ExecStart=/usr/lib/jvm/java-11-openjdk-11.0.9.11-2.el7_9.x86_64/bin/java -Dspring.config.location=/opt/TeamCityAgent/work/567965ce87d56df1/target/classes/application.yml  -jar /opt/app/demo-0.0.1-SNAPSHOT.war --server.port=8083
-User=root
-Restart=on-failure
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-```
-- 다음의 명령어로 재시작
-```
-$ systemctl start demo.service
-$ systemctl status demo.service
-```
-### 3. 이미지 생성 
+### 2. 이미지 생성 
 - 자세한 Spring boot와 docker에 관한 내용은 https://spring.io/guides/gs/spring-boot-docker/ 를 참고
 - Dockerfile 파일 작성
 ```
@@ -188,7 +168,7 @@ COPY ${WAR_FILE} spring-demo.jar
 ENTRYPOINT ["java","-jar","/spring-demo.jar"]
 ```
 
-### 4. 이미지 적용
+### 3. 이미지 적용 후 run & start
 
 - docker build -t springio/gs-spring-boot-docker .
 - docker run -p 8080:8080 springio/gs-spring-boot-docker
