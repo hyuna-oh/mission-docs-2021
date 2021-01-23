@@ -142,4 +142,6 @@ Environment="HTTP_PROXY=http://proxy.example.com:80"
 (안그럼 에러가 발생함)
 
 ## 2. 1월 둘째주에 만든 Spring Boot 프로젝트로 이미지 구성하고 컨테이너로 실행하기
-
+### 1. TeamCity를 통해 빌드
+### 2.
+### 3.
