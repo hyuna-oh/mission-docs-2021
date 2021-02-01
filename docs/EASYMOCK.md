@@ -1,5 +1,4 @@
 # EasyMock
 - EasyMock은 Apache 라이센스에 따라 릴리스 된 Java 용 오픈 소스 테스트 프레임 워크  
 - 이 프레임 워크를 통해 테스트 중심 개발 또는 동작 기반 개발을 위해 테스트 이중 객체를 작성할 수 있습니다.
-
-# Spring Adapter?
+- 또한 Spring 구조에서 Service 를 테스트할 때 유용합니다.
