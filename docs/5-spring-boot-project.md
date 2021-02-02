@@ -89,8 +89,8 @@
 ```
 ### BOM Dependency 덮어쓰기
 - artifact 버전의 우선순위는 다음과 같습니다
-1. artifact 가 직접 version을 선언해놓은 경우
-2. parent에 artifact의 버전이 존재하는 경우
+1. artifact에 직접 version을 명시해놓은 경우
+2. parent에 artifact의 버전이 이미 존재하는 경우
 3. import 된 pom과 import 된 파일들의 버전
 4. dependecny mediation (버전 조정 기능)
 
