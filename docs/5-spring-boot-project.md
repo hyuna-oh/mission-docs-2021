@@ -12,8 +12,8 @@
 - A -> B -> C -> D 1.4  와  A -> E -> D 1.0 라는 종속적 특정이 있을 때, A의 프로젝트에 있는 D의 1.4 버전과 D의 1.0버전 중 포함되는 dependency는 1.0 버전이다.  
   왜냐하면, D 1.0이 A와 더 가까운 종속성을 지니고 있기 때문이다.
 
-### BOM의 사용법
-#### dependencyManagement 태그를 이용하여 다음의 dependency들을 등록함.
+## BOM의 사용법
+### dependencyManagement 태그를 이용하여 다음의 dependency들을 등록함.
 ```
 <project ...>
 	
@@ -47,8 +47,8 @@
     </dependencyManagement>
 </project>
 ```
-#### BOM File의 사용
-##### 두 가지 방법이 있는데, parent 태그를 사용하여 추가하는 방법과 dependency 태그에 추가하는 방법이다.
+### BOM File의 사용
+#### 두 가지 방법이 있는데, parent 태그를 사용하여 추가하는 방법과 dependency 태그에 추가하는 방법이다.
 - parent 태그를 사용하여 추가
 ```
 <project ...>
