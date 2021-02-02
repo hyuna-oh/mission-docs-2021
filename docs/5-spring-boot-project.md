@@ -9,8 +9,7 @@
 ### Transitive Dependencies (종속성)
 - 만약 2개의 dependency가 서로 다른 버전의 동일한 artifact에 종속되어 있다면, 어떤 버전이 포함되는게 맞을까?
 - 정답은 "더 가까운 종속적 특성"을 지닌 버전이라고 할 수 있다. 예를 들어 설명해보겠다.
-- A -> B -> C -> D 1.4  와  A -> E -> D 1.0 라는 종속적 특정이 있을 때, A의 프로젝트에 있는 D의 1.4 버전과 D의 1.0버전 중 포함되는 dependency는 1.0 버전이다.  
-  왜냐하면, D 1.0이 A와 더 가까운 종속성을 지니고 있기 때문이다.
+- A -> B -> C -> D 1.4  와  A -> E -> D 1.0 라는 종속적 특정이 있을 때, A의 프로젝트에 있는 D의 1.4 버전과 D의 1.0버전 중 포함되는 dependency는 1.0 버전이다. 왜냐하면, D 1.0이 A와 더 가까운 종속성을 지니고 있기 때문이다. 이를,  ```dependency mediation``` 이라고 한다.
 
 ## BOM의 사용법
 ### dependencyManagement 태그를 이용하여 다음의 dependency들을 등록함.
@@ -48,7 +47,7 @@
 </project>
 ```
 ### BOM File의 사용
-#### 두 가지 방법이 있는데, parent 태그를 사용하여 추가하는 방법과 dependency 태그에 추가하는 방법이다.
+#### parent 태그를 사용하여 추가하는 방법과 dependency 태그에 추가하는 방법이다.
 - parent 태그를 사용하여 추가
 ```
 <project ...>
@@ -89,3 +88,41 @@
 </project>
 ```
 ### BOM Dependency 덮어쓰기
+- artifact 버전의 우선순위는 다음과 같습니다
+1. artifact 가 직접 version을 선언해놓은 경우
+2. parent에 artifact의 버전이 존재하는 경우
+3. import 된 pom과 import 된 파일들의 버전
+4. dependecny mediation (버전 조정 기능)
+
+### Spring BOM 
+- 앞서 말한바와 같이 spring에 종속된 타사의 라이브러리, 혹은 다른 스프링 프로젝트를 가져올 때 오래된 버전을 가져올 수 있다. 혹은 직접 버전을 명시한 사실을 잊어버리게 되면 새로운 문제에 직면하게 된다.
+- 그렇기에 이 문제를 극복하기 위해 메이븐은 BOM dependency의 컨셉을 도입했다.
+- ```spring-framework-bom``` 을 dependencyManagement 섹션에 import 하면서 모든 Spring dependency들을 동일한 버전으로 등록한다.
+
+```
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>4.3.8.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+- 그렇기에 더이상 특정버전들을 각 Spring artifact 들에 직접적으로 명시할 필요가 없다.
+```
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+    </dependency>
+<dependencies>
+```
+
