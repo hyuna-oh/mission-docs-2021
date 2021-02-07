@@ -6,6 +6,11 @@
 - Spring Web 프로젝트로, Maven, Java, jdk 1.8 버전을 사용하였습니다.
 - 추가 한 Dependency 항목 : Spring Web, Rest Repository, PostgreSQL Driver, MySQL Driver, Rest Repository HAL Explorer, Spring HATEOAS
 
+![image](https://user-images.githubusercontent.com/57924258/107136931-f68f1280-694a-11eb-89d5-a2fc445210ce.png)
+![image](https://user-images.githubusercontent.com/57924258/107136932-f8f16c80-694a-11eb-8760-6b927d297c3e.png)
+![image](https://user-images.githubusercontent.com/57924258/107136934-fbec5d00-694a-11eb-8360-3c365f1dc6b0.png)
+![image](https://user-images.githubusercontent.com/57924258/107136937-027ad480-694b-11eb-8821-9a98bb46b0e8.png)
+
 - 다음은 초기의 pom.xml 파일 내용입니다.
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -376,7 +381,7 @@
 ### pom.xml에서 spring-boot-maven-plugin이란 무엇일까?
 - build 태그 안에 존재하는 spring-boot-maven-plugin은 build를 수행할 때 관여하는 플러그인 입니다.
 - 이 플러그인이 구체적으로 어떤 역할을 하는지 알아보기위해 pom.xml에서 해당 플러그인을 지우고 mvn clean package 명령어를 실행한 뒤 생성된 jar 파일을 실행해 보겠습니다.
-
+![image](https://user-images.githubusercontent.com/57924258/107136959-1cb4b280-694b-11eb-8c4a-4eff6705624c.png)
 - Manifest 속성이 없다하니, 생성 된 jar 파일 내부의 MANIFEST.MF 파일을 살펴보겠습니다.
 - (여기서 Manifest는 jar, war 등의 파일로 패키징 할 때 사용한 설정들을 저장해 놓은 파일 정도로 생각하시면 될 것 같습니다.)
 ```
@@ -403,7 +408,7 @@ Build-Jdk: 1.8.0_252
             └── SpringBootIntegrationDemoApplication.class
 ```
 - 이번에는 plugin을 설정한 후 mvn clean package 실행 후 자바로 생성된 jar 파일을 실행시켜 보겠습니다.
-
+![image](https://user-images.githubusercontent.com/57924258/107136962-2807de00-694b-11eb-8cf4-628f02b49ccc.png)
 
 - 에러없이 실행되는 것을 확인 할 수 있습니다.
 - 무슨 차이가 있는 것인지 MANIFEST.MF 파일을 살펴보겠습니다.
@@ -468,13 +473,12 @@ Main-Class: org.springframework.boot.loader.JarLauncher
 - 현재 3.4.5 버전이 설치 된 것을 확인 할 수 있습니다.
 - 그렇다면 이 버전의 정보는 어디서 가져올 수 있는것일까요?
 - 다시 pom.xml의 dependencyManagement 태그 안에 있던 spring-boot-dependencies를 보면 hikaricp version 정보를 확인할 수 있습니다.
-
+![image](https://user-images.githubusercontent.com/57924258/107136963-2b9b6500-694b-11eb-9456-807734a9d162.png)
 
 ## Maven 사용시 기타 참고사항
 - 참고로 maven 사용 전에 Always update snapshots 설정을 반드시 체크하고 수행하시기 바랍니다..
 - 안 그러면 pom.xml에서 수정된 항목이 제대로 반영되지 않아 큰 곤란을 겪을 수 있습니다.. 휴..ㅠㅠㅋ
-
-
+![image](https://user-images.githubusercontent.com/57924258/107136964-2e965580-694b-11eb-9a04-cd9cb779ff09.png)
 
 
 
