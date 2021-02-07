@@ -456,7 +456,9 @@ Main-Class: org.springframework.boot.loader.JarLauncher
 
 - 관련하여 세부적인 내용은 https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/ 를 참조하시면 됩니다.
 ## Maven에 HikariCP dependency 추가
-- HikariCP란 JDBC Connection Pool 의 종류 중 하나입니다.
+- HikariCP란 DataBase Connection Pool 의 종류 중 하나입니다.
+- (다른 DBCP들보다 빠르고 가벼워 많이들 사용한다고 합니다.)
+- DBCP라고 하는데, 이는 외부 라이브러리의 Connection 객체들을 저장해둔 pool로 connection을 계속 생성하는 것이 아닌 빌려쓸 수 있는 저장소라고 생각하시면 됩니다.
 - 상단의 pom.xml에 다음 dependency를 pom.xml에 추가하겠습니다.
 ```
         <dependency>
