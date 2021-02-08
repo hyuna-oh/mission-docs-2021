@@ -477,6 +477,24 @@ Main-Class: org.springframework.boot.loader.JarLauncher
 - 다시 pom.xml의 dependencyManagement 태그 안에 있던 spring-boot-dependencies를 보면 hikaricp version 정보를 확인할 수 있습니다.
 ![image](https://user-images.githubusercontent.com/57924258/107136963-2b9b6500-694b-11eb-9456-807734a9d162.png)
 
+## application.yml 파일에 hikari 속성 적용
+
+```
+  datasource:
+    hikari:
+      jdbc-url: jdbc:log4jdbc:postgresql://~
+      #jdbc-url: 
+      username: 
+      password: 
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      connection-test-query: SELECT 1
+      maximum-pool-size: 10
+      minimum-idle: 3
+    sql-script-encoding: UTF-8
+    continue-on-error: true
+    initialization-mode: always
+```
+
 ## Maven 사용시 기타 참고사항
 - 참고로 maven 사용 전에 Always update snapshots 설정을 반드시 체크하고 수행하시기 바랍니다..
 - 안 그러면 pom.xml에서 수정된 항목이 제대로 반영되지 않아 큰 곤란을 겪을 수 있습니다.. 휴..ㅠㅠㅋ
