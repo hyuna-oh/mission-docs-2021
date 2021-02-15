@@ -1,0 +1,17 @@
+hadoop version을 찾으려함 (https://spring.io/projects/spring-hadoop#overview)
+-> 현재 spring boot version은 2.4.2 
+-> spring version은 5.3.3 (https://github.com/spring-projects/spring-boot/releases/tag/v2.4.2)
+-> hadoop version은 2.5.0이 가장 최신 (근데 spring version은 4.3.9임)
+-> 다행히 호환은 됨 (https://mvnrepository.com/artifact/org.springframework.data/spring-data-hadoop/2.5.0.RELEASE)
+-> [root@bdsstdb2 ~]# hadoop version
+    Hadoop 3.1.1.7.1.1.0-565
+-> 공식문서 : https://docs.spring.io/spring-hadoop/docs/current/reference/html/ 로 하둡버전에 맞는 spring 버전을 찾는다.
+  (원래는 hadoop 2.7.1 버전 / spring 4.2 버전인데, 일단... 해보겠음..)
+->  http://nexus.hadoop-professionals.org/repository/central/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar 에서 멈춤
+-> exclusion을 이용하자능
+
+잘됨ㅋ
+-> core-site.xml 및 hdfs-site.xml 및 mapred-site.xml 를 resources 폴더로 가져옴 (나중에 이 파일들의 역할이 뭔지 찾아보긔)
+-> 이 파일들은 각각 역할에 대한 속성값들을 가지고 있음. 얘네를 가지고 Hadoop Configuration 클래스를 수행해야 함.
+-> 이제 Hadoop Configuration 클래스로 수행 해봤을 때 어뜨케되나 보겠음
+->
