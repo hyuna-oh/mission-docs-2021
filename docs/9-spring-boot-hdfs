@@ -46,6 +46,11 @@ hive / libfb303 / 8.9.3 / system
 commons-configuration / commons-configuration / 1.6
 
 org.apache.commons / commons-lang3 / 3.7
+commons-lang / commons-lang / 2.6
+commons-io / commons-io / 2.6
+commons-collections / commons-collections / 3.2.2
 
+또한 메이븐 플러그인에 다음의 내용 꼭 추가 해야 lcoal lib들을 추가할 수 있음
+- <configuration> <includeSystemScope>true~
 
 
