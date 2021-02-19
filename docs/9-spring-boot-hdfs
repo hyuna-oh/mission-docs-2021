@@ -14,4 +14,38 @@ hadoop version을 찾으려함 (https://spring.io/projects/spring-hadoop#overvie
 -> core-site.xml 및 hdfs-site.xml 및 mapred-site.xml 를 resources 폴더로 가져옴 (나중에 이 파일들의 역할이 뭔지 찾아보긔)
 -> 이 파일들은 각각 역할에 대한 속성값들을 가지고 있음. 얘네를 가지고 Hadoop Configuration 클래스를 수행해야 함.
 -> 이제 Hadoop Configuration 클래스로 수행 해봤을 때 어뜨케되나 보겠음
-->
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+2월 19일 (금)
+- 계정설정 관련
+드디어..됐따능..
+일단은 계정설정부터 얘기하는걸로.
+hdfs 계정으로 파일을 등록했더니 됐다.
+하지만 root 계정으로 파일을 등록하면 실패한다. (권한 미스)
+
+org.apache.hadoop.security.AccessControlException: Permission denied: user=root, access=WRITE 라는 에러 발생함.
+
+- jar 충돌 해결
+hive / hive-exec / 1.2.1000.2.6.5.0-292 / scope : system
+hive / hive-metastore / 1.2.1000.2.6.5.0-292 / scope : system
+hive / hive-serde / 1.2.1000.2.6.5.0-292 / scope : system
+hive / hive-service / 1.2.1000.2.6.5.0-292 / scope : system
+hive / hive-shims / 1.2.1000.2.6.5.0-292 / scope : system
+hive / hive-shims-common / 1.2.1000.2.6.5.0-292 / scope : system
+
+hadoop / hadoop-common / 2.7.3.2.6.5.0-292 / scope : system
+hadoop / hadoop-hdfs / 2.7.3.2.6.5.0-292 / scope : system
+hadoop / hadoop-mapreduce-client-common / 2.7.3.2.6.5.0-292 / scope : system
+hadoop / hadoop-mapreduce-client-core / 2.7.3.2.6.5.0-292 / scope : system
+hadoop / hadoop-auth / 2.7.3.2.6.5.0-292 / scope : system
+
+org.apache.htrace / htrace / 3.1.0-incubating / scope : system
+commons-cli / common-cli / 1.4 / 2.7.3.2.6.5.0-292 / scope : system
+hive / libfb303 / 8.9.3 / system
+commons-configuration / commons-configuration / 1.6
+
+org.apache.commons / commons-lang3 / 3.7
+
+
+
