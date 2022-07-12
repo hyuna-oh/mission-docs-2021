@@ -2,15 +2,6 @@ https://github.com/apache/parquet-mr/blob/e990eb3f14c39273e46a9fce07ec85d2edf7fc
 
 https://www.geeksforgeeks.org/extending-a-class-in-scala/
 
-private val recordWriter: RecordWriter[Void, InternalRow] = {
-  val outputFormat = {
-    new ParquetOutputFormat[InternalRow]() {
-      // ...
-      override def getDefaultWorkFile(context: TaskAttemptContext, extension: String): Path = {
-        // ..
-        //  prefix is hard-coded here:
-        new Path(path, f"part-r-$split%05d-$uniqueWriteJobId$bucketString$extension")
-    }
-  }
-}
+
+https://stackoverflow.com/questions/36107581/change-output-filename-prefix-for-dataframe-write
 extends ParquetOutputFormat
